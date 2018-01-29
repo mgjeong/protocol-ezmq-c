@@ -1,0 +1,13 @@
+/*!
+
+@mainpage Welcome
+
+protocol-ezmq-c is a wrapper library, which is written on the top of protocol-ezmq-cpp that provides a standard messaging interface over various<br /> data streaming and serialization / deserialization middlewares along with some added functionalities.
+
+<b> The main fearues are as followings:</b><br />
+(1) Currently supports streaming using 0mq and serialization / deserialization using protobuf. <br />
+(2) Publisher -> Multiple Subscribers broadcasting.<br />
+(3) Topic based subscription and data routing at source (read publisher).<br />
+(4) High speed serialization and deserialization.
+
+*/
