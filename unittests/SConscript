@@ -1,0 +1,101 @@
+###############################################################################
+# Copyright 2017 Samsung Electronics All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+###############################################################################
+
+##
+# CEZMQ Unit Test build script
+##
+
+import os
+from build_common.tools.RunTest import run_test
+
+Import('env')
+
+gtest_env = SConscript('#extlibs/gtest/SConscript')
+lib_env = gtest_env.Clone()
+
+if lib_env.get('RELEASE'):
+    lib_env.AppendUnique(CCFLAGS=['-Os'])
+else:
+    lib_env.AppendUnique(CCFLAGS=['-g'])
+    lib_env.AppendUnique(CPPDEFINES=['DEBUG_LOG'])
+
+
+cezmq_test_env = lib_env.Clone()
+target_os = cezmq_test_env.get('TARGET_OS')
+target_arch = cezmq_test_env.get('TARGET_ARCH')
+
+######################################################################
+# Build flags
+######################################################################
+
+if cezmq_test_env.get('RELEASE'):
+	cezmq_test_env.PrependUnique(LIBS=['ezmq'], LIBPATH=[os.path.join('./../dependencies/protocol-ezmq-cpp/out/linux/', target_arch, 'release')])
+else:
+	cezmq_test_env.PrependUnique(LIBS=['ezmq'], LIBPATH=[os.path.join('./../dependencies/protocol-ezmq-cpp/out/linux/', target_arch, 'debug')])
+
+#cezmq_test_env.AppendUnique(LIBPATH=[lib_env.get('BUILD_DIR')])
+cezmq_test_env.AppendUnique(LIBS=['cezmq', 'protobuf'])
+
+if target_os not in ['windows']:
+    cezmq_test_env.AppendUnique(
+        CXXFLAGS=['-O2', '-g', '-Wall', '-fmessage-length=0', '-I/usr/local/include'])
+
+if not cezmq_test_env.get('RELEASE'):
+    cezmq_test_env.PrependUnique(LIBS=['gcov'])
+    cezmq_test_env.AppendUnique(CXXFLAGS=['--coverage'])
+
+cezmq_test_env.AppendUnique(CPPPATH=[
+    '../include',
+	'../extlibs/hippomocks/hippomocks'
+])
+
+######################################################################
+# Build Test
+######################################################################
+
+cezmq_api_test_src = cezmq_test_env.Glob('./cezmqapitest.cpp')
+cezmq_api_test = cezmq_test_env.Program('cezmq_api_test',
+                                         cezmq_api_test_src)
+Alias("cezmq_api_test", cezmq_api_test)
+cezmq_test_env.AppendTarget('cezmq_api_test')
+
+cezmq_pub_test_src = cezmq_test_env.Glob('./cezmwpublishertest.cpp')
+cezmq_pub_test = cezmq_test_env.Program('cezmq_pub_test',
+                                         cezmq_pub_test_src)
+Alias("cezmq_pub_test", cezmq_pub_test)
+cezmq_test_env.AppendTarget('cezmq_pub_test')
+
+cezmq_sub_test_src = cezmq_test_env.Glob('./cezmqsubscribertest.cpp')
+cezmq_sub_test = cezmq_test_env.Program('cezmq_sub_test',
+                                         cezmq_sub_test_src)
+Alias("cezmq_sub_test", cezmq_sub_test)
+cezmq_test_env.AppendTarget('cezmq_sub_test')
+
+cezmq_event_test_src = cezmq_test_env.Glob('./cezmqeventtest.cpp')
+cezmq_event_test = cezmq_test_env.Program('cezmq_event_test',
+                                         cezmq_event_test_src)
+Alias("cezmq_event_test", cezmq_event_test)
+cezmq_test_env.AppendTarget('cezmq_event_test')
+
+cezmq_reading_test_src = cezmq_test_env.Glob('./cezmqreadingtest.cpp')
+cezmq_reading_test = cezmq_test_env.Program('cezmq_reading_test',
+                                         cezmq_reading_test_src)
+Alias("cezmq_reading_test", cezmq_reading_test)
+cezmq_test_env.AppendTarget('cezmq_reading_test')
+
+if env.get('TEST') == '1':
+	run_test(cezmq_test_env, '', 'unittests/cezmq_api_test', cezmq_api_test)
