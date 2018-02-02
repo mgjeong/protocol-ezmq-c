@@ -24,12 +24,12 @@
 
 static bool isStarted;
 
-void subCB(void * /*event*/)
+void subCB(const ezmqMsgHandle_t /*event*/, CEZMQContentType /*contentType*/)
 {
     printf("SUB callback \n");
 }
 
-void subTopicCB(const char * topic, void * /*event*/)
+void subTopicCB(const char * topic, const ezmqMsgHandle_t /*event*/, CEZMQContentType /*contentType*/)
 {
     printf("\nSUB topic callback\n");
     printf("\nTopic: %s\n", topic);

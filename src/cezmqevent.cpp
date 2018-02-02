@@ -95,7 +95,7 @@ CEZMQErrorCode ezmqCreateEvent(ezmqEventHandle_t*eventHandle)
 {
     VERIFY_NON_NULL(eventHandle)
     *eventHandle = new(std::nothrow) Event();
-    ALLOC_ASSERT(eventHandle)
+    ALLOC_ASSERT(*eventHandle)
     return CEZMQ_OK;
 }
 

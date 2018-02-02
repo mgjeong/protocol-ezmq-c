@@ -22,6 +22,7 @@
 #include <HippoMocks/hippomocks.h>
 
 #include "cezmqevent.h"
+#include "cezmqbytedata.h"
 #include "cezmqreading.h"
 
 class TestWithMock: public testing::Test
@@ -95,6 +96,14 @@ ezmqEventHandle_t getezmqEvent()
     ezmqReadingSetDevice(reading2Handle, readingDevice2);
 
     return eventHandle;
+}
+
+ezmqByteDataHandle_t getezmqByteData()
+{
+    ezmqByteDataHandle_t byteDataHandle;
+    char byteArray[] = { 0x40, 0x05, 0x10, 0x11, 0x12 };
+    ezmqCreateByteData(&byteDataHandle, (uint8_t *) byteArray, sizeof(byteArray));
+    return byteDataHandle;
 }
 
 #endif // UNITTESTHELPER_H

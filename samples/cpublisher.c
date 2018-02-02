@@ -19,10 +19,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include<stdint.h>
 
 #include "cezmqapi.h"
 #include "cezmqpublisher.h"
 #include "cezmqevent.h"
+#include "cezmqbytedata.h"
 #include "cezmqreading.h"
 #include "cezmqerrorcodes.h"
 

@@ -97,8 +97,16 @@ TEST_F(CEZMQPublisherTest, pubStart)
 }
 
 TEST_F(CEZMQPublisherTest, pubPublish)
-    {
-    void *event = getezmqEvent();
+{
+    ezmqEventHandle_t event = getezmqEvent();
+    ASSERT_NE(nullptr, event);
+    EXPECT_EQ(CEZMQ_OK, ezmqStartPublisher(mPublisher));
+    EXPECT_EQ(CEZMQ_OK, ezmqPublish(mPublisher, event));
+}
+
+TEST_F(CEZMQPublisherTest, pubPublishByteData)
+{
+    ezmqByteDataHandle_t event = getezmqByteData();
     ASSERT_NE(nullptr, event);
     EXPECT_EQ(CEZMQ_OK, ezmqStartPublisher(mPublisher));
     EXPECT_EQ(CEZMQ_OK, ezmqPublish(mPublisher, event));
@@ -106,7 +114,15 @@ TEST_F(CEZMQPublisherTest, pubPublish)
 
 TEST_F(CEZMQPublisherTest, pubPublishOnTopic)
 {
-    void *event = getezmqEvent();
+    ezmqEventHandle_t event = getezmqEvent();
+    ASSERT_NE(nullptr, event);
+    EXPECT_EQ(CEZMQ_OK, ezmqStartPublisher(mPublisher));
+    EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, mTopic, event));
+}
+
+TEST_F(CEZMQPublisherTest, pubPublishByteDataOnTopic)
+{
+    ezmqByteDataHandle_t event = getezmqByteData();
     ASSERT_NE(nullptr, event);
     EXPECT_EQ(CEZMQ_OK, ezmqStartPublisher(mPublisher));
     EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, mTopic, event));
@@ -114,69 +130,91 @@ TEST_F(CEZMQPublisherTest, pubPublishOnTopic)
 
 TEST_F(CEZMQPublisherTest, pubPublishOnTopic1)
 {
-    void *event = getezmqEvent();
+    ezmqEventHandle_t event = getezmqEvent();
     ASSERT_NE(nullptr, event);
+    ezmqByteDataHandle_t byteData = getezmqByteData();
+    ASSERT_NE(nullptr, byteData);
+
     EXPECT_EQ(CEZMQ_OK, ezmqStartPublisher(mPublisher));
 
     // Empty topic test
     const char * testingTopic = "";
     EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopic(mPublisher, testingTopic, event));
+    EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopic(mPublisher, testingTopic, byteData));
 
     // Numeric test
     testingTopic = "123";
     EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, testingTopic, event));
+    EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, testingTopic, byteData));
 
     // Alpha-Numeric test
     testingTopic = "1a2b3";
     EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, testingTopic, event));
+    EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, testingTopic, byteData));
 
     // Alphabet forward slash test
     testingTopic = "topic/";
     EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, testingTopic, event));
+    EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, testingTopic, byteData));
 
     // Alphabet-Numeric, forward slash test
     testingTopic = "topic/13/4jtjos/";
     EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, testingTopic, event));
+    EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, testingTopic, byteData));
 
     // Alphabet-Numeric, forward slash test
     testingTopic = "123a/1this3/4jtjos";
     EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, testingTopic, event));
+    EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, testingTopic, byteData));
 
     // Topic contain forward slash at last
     testingTopic = "topic/122/livingroom/";
     EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, testingTopic, event));
+    EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, testingTopic, byteData));
 
     // Topic contain -
     testingTopic = "topic/122/livingroom/-";
     EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, testingTopic, event));
+    EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, testingTopic, byteData));
 
     // Topic contain _
     testingTopic = "topic/122/livingroom_";
     EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, testingTopic, event));
+    EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, testingTopic, byteData));
 
     // Topic contain .
     testingTopic = "topic/122.livingroom.";
     EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, testingTopic, event));
+    EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopic(mPublisher, testingTopic, byteData));
 }
 
 TEST_F(CEZMQPublisherTest, pubPublishTopicList)
 {
-    void *event = getezmqEvent();
+    ezmqEventHandle_t event = getezmqEvent();
     ASSERT_NE(nullptr, event);
+    ezmqByteDataHandle_t byteData = getezmqByteData();
+    ASSERT_NE(nullptr, byteData);
+
     EXPECT_EQ(CEZMQ_OK, ezmqStartPublisher(mPublisher));
     EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopic(mPublisher, "", event));
+    EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopic(mPublisher, "", byteData));
     const char **topicList = NULL;
     EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopicList(mPublisher, topicList, 0,  event));
+    EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopicList(mPublisher, topicList, 0,  byteData));
     EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopicList(mPublisher, topicList, 5,  event));
+    EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopicList(mPublisher, topicList, 5,  byteData));
     topicList = (const char **)calloc(3, sizeof(char *));
     topicList[0] = "topic1";
     EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopicList(mPublisher, topicList, 0,  event));
+    EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopicList(mPublisher, topicList, 0,  byteData));
     topicList[1] = "";
     EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopicList(mPublisher, topicList, 2,  event));
+    EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopicList(mPublisher, topicList, 2,  byteData));
 
     topicList[0] = "topic1";
     topicList[1] = "topic2";
     EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopicList(mPublisher, topicList, 2,  event));
+    EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopicList(mPublisher, topicList, 2,  byteData));
 }
 
 TEST_F(CEZMQPublisherTest, pubGetPort)
@@ -188,13 +226,18 @@ TEST_F(CEZMQPublisherTest, pubGetPort)
 
 TEST_F(CEZMQPublisherTest, pubNegative)
 {
-    void *event = getezmqEvent();
+    ezmqEventHandle_t event = getezmqEvent();
+    ASSERT_NE(nullptr, event);
+    ezmqByteDataHandle_t byteData = getezmqByteData();
+    ASSERT_NE(nullptr, byteData);
+
     const char **topicList = NULL;
     int port;
     EXPECT_EQ(CEZMQ_ERROR, ezmqStartPublisher(NULL));
     EXPECT_EQ(CEZMQ_ERROR, ezmqPublish(mPublisher, NULL));
     EXPECT_EQ(CEZMQ_ERROR, ezmqPublishOnTopic(mPublisher, "topic", NULL));
     EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopic(mPublisher, NULL, event));
+    EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopic(mPublisher, NULL, byteData));
     EXPECT_EQ(CEZMQ_ERROR, ezmqPublishOnTopicList(mPublisher, topicList, 1, NULL));
     EXPECT_EQ(CEZMQ_ERROR, ezmqStopPublisher(NULL));
     EXPECT_EQ(CEZMQ_ERROR, ezmqGetPubPort(NULL, &port));

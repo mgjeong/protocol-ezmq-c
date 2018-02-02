@@ -78,7 +78,7 @@ EZMQ_EXPORT CEZMQErrorCode ezmqStartPublisher(ezmqPubHandle_t pubHandle);
  *
  * @return CEZMQErrorCode - CEZMQ_OK on success, otherwise appropriate error code.
  */
-EZMQ_EXPORT CEZMQErrorCode ezmqPublish(ezmqPubHandle_t pubHandle, ezmqEventHandle_t event);
+EZMQ_EXPORT CEZMQErrorCode ezmqPublish(ezmqPubHandle_t pubHandle, const ezmqMsgHandle_t event);
 
 /**
  * Publish events on a specific topic on socket for subscribers.
@@ -94,7 +94,7 @@ EZMQ_EXPORT CEZMQErrorCode ezmqPublish(ezmqPubHandle_t pubHandle, ezmqEventHandl
  *       numerics [0-9] and special characters _ - . and /
  */
 EZMQ_EXPORT CEZMQErrorCode ezmqPublishOnTopic(ezmqPubHandle_t pubHandle, const char *topic,
-        ezmqEventHandle_t event);
+        const ezmqMsgHandle_t event);
 
 /**
  * Publish an events on list of topics on socket for subscribers. On any of
@@ -113,7 +113,7 @@ EZMQ_EXPORT CEZMQErrorCode ezmqPublishOnTopic(ezmqPubHandle_t pubHandle, const c
  *       numerics [0-9] and special characters _ - . and /
  */
 EZMQ_EXPORT CEZMQErrorCode ezmqPublishOnTopicList(ezmqPubHandle_t pubHandle, const char ** topicList,
-        int listSize, ezmqEventHandle_t event);
+        int listSize, const ezmqMsgHandle_t event);
 
 /**
  * Stops PUB instance.

@@ -42,12 +42,12 @@ typedef void * ezmqSubHandle_t;
 /**
  * Callbacks to get all the subscribed events.
  */
-typedef void (*csubCB)(ezmqEventHandle_t event);
+typedef void (*csubCB)(const ezmqMsgHandle_t event, CEZMQContentType contentType);
 
 /**
  * Callbacks to get all the subscribed events for a specific topic.
  */
-typedef void (*csubTopicCB)(const char * topic, ezmqEventHandle_t event);
+typedef void (*csubTopicCB)(const char * topic, const ezmqMsgHandle_t event, CEZMQContentType contentType);
 
 /**
  *  Create ezmq Subscriber with given ip, port and callbacks.

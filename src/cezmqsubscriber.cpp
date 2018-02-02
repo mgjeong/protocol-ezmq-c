@@ -17,6 +17,8 @@
 
 #include "cezmqsubscriber.h"
 #include "EZMQSubscriber.h"
+#include "EZMQMessage.h"
+#include "EZMQByteData.h"
 #include "Event.pb.h"
 
 using namespace ezmq;
@@ -26,14 +28,36 @@ typedef struct subscriber
     EZMQSubscriber *handle;
 }subscriber;
 
-void subCB(ezmq::Event event, csubCB subcb)
+void subCB(const EZMQMessage &event, csubCB subcb)
 {
-    subcb(&event );
+    if(EZMQ_CONTENT_TYPE_PROTOBUF == event.getContentType())
+    {
+        const Event *protoEvent;
+        protoEvent =  dynamic_cast<const Event*>(&event);
+        subcb((void *)protoEvent, CEZMQ_CONTENT_TYPE_PROTOBUF);
+    }
+    else if(EZMQ_CONTENT_TYPE_BYTEDATA == event.getContentType())
+    {
+        const EZMQByteData *byteData;
+        byteData =  dynamic_cast<const EZMQByteData*>(&event);
+        subcb((void *)byteData, CEZMQ_CONTENT_TYPE_BYTEDATA);
+    }
 }
 
-void subTopicCB(std::string topic, ezmq::Event event, csubTopicCB topiccb)
+void subTopicCB(std::string topic, const EZMQMessage &event, csubTopicCB topiccb)
 {
-    topiccb(topic.c_str(), &event );
+    if(EZMQ_CONTENT_TYPE_PROTOBUF == event.getContentType())
+    {
+        const Event *protoEvent;
+        protoEvent =  dynamic_cast<const Event*>(&event);
+        topiccb(topic.c_str(), (void *)protoEvent, CEZMQ_CONTENT_TYPE_PROTOBUF);
+    }
+    else if(EZMQ_CONTENT_TYPE_BYTEDATA == event.getContentType())
+    {
+        const EZMQByteData *byteData;
+        byteData =  dynamic_cast<const EZMQByteData*>(&event);
+        topiccb(topic.c_str(), (void *)byteData, CEZMQ_CONTENT_TYPE_BYTEDATA);
+    }
 }
 
 static EZMQSubscriber *getSubInstance(ezmqSubHandle_t subHandle)
