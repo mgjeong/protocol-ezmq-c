@@ -43,15 +43,15 @@ install_dependencies() {
 
     # Build ezmq-protocol-cpp for given architecture [x86/x86_64/arm/arm64/armhf]
     echo -e "${GREEN}Installing ezmq library and its dependencies${NO_COLOUR}"
-    if [ "x86" == ${EZMQ_TARGET_ARCH} ]; then
+    if [ "x86" = ${EZMQ_TARGET_ARCH} ]; then
         ./build.sh --with_dependencies=true --target_arch=x86
-    elif [ "x86_64" == ${EZMQ_TARGET_ARCH} ]; then
+    elif [ "x86_64" = ${EZMQ_TARGET_ARCH} ]; then
         ./build.sh --with_dependencies=true --target_arch=x86_64
-    elif [ "arm" == ${EZMQ_TARGET_ARCH} ]; then
+    elif [ "arm" = ${EZMQ_TARGET_ARCH} ]; then
         ./build.sh --with_dependencies=true --target_arch=arm
-    elif [ "arm64" == ${EZMQ_TARGET_ARCH} ]; then
+    elif [ "arm64" = ${EZMQ_TARGET_ARCH} ]; then
         ./build.sh --with_dependencies=true --target_arch=arm64
-    elif [ "armhf" == ${EZMQ_TARGET_ARCH} ]; then
+    elif [ "armhf" = ${EZMQ_TARGET_ARCH} ]; then
         ./build.sh --with_dependencies=true --target_arch=armhf
     fi
     echo -e "${GREEN}Installation of ezmq library and its dependencies done${NO_COLOUR}"
@@ -170,17 +170,17 @@ process_cmd_args() {
                 ;;
             --target_arch=*)
                 EZMQ_TARGET_ARCH="${1#*=}";
-                if [ "x86" == ${EZMQ_TARGET_ARCH} ]; then
+                if [ "x86" = ${EZMQ_TARGET_ARCH} ]; then
                     build_x86; exit 0;
-                elif [ "x86_64" == ${EZMQ_TARGET_ARCH} ]; then
+                elif [ "x86_64" = ${EZMQ_TARGET_ARCH} ]; then
                     build_x86_64; exit 0;
-                elif [ "arm" == ${EZMQ_TARGET_ARCH} ]; then
+                elif [ "arm" = ${EZMQ_TARGET_ARCH} ]; then
                     build_arm; exit 0;
-                elif [ "arm64" == ${EZMQ_TARGET_ARCH} ]; then
+                elif [ "arm64" = ${EZMQ_TARGET_ARCH} ]; then
                     build_arm64; exit 0;
-                elif [ "armhf" == ${EZMQ_TARGET_ARCH} ]; then
+                elif [ "armhf" = ${EZMQ_TARGET_ARCH} ]; then
                     build_armhf; exit 0;
-                elif [ "armhf-qemu" == ${EZMQ_TARGET_ARCH} ]; then
+                elif [ "armhf-qemu" = ${EZMQ_TARGET_ARCH} ]; then
                     build_armhf_qemu; exit 0;
                 else
                     echo -e "${RED}Not a supported architecture${NO_COLOUR}"
