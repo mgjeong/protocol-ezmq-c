@@ -21,10 +21,12 @@
 #include <unistd.h>
 #include <signal.h>
 #include <pthread.h>
+#include<stdint.h>
 
 #include "cezmqapi.h"
 #include "cezmqsubscriber.h"
 #include "cezmqevent.h"
+#include "cezmqbytedata.h"
 #include "cezmqreading.h"
 #include "cezmqerrorcodes.h"
 
@@ -37,7 +39,7 @@ pthread_condattr_t g_cattr;
  *  Uncomment the lines in case you want to see all the fields of
  *  received event and readings.
  */
-void printEvent(ezmqEventHandle_t event)
+void printEvent(ezmqMsgHandle_t event)
 {
     /* long value;
     ezmqEventGetID(event, &value2);
@@ -83,17 +85,52 @@ void printEvent(ezmqEventHandle_t event)
     }
 }
 
-void subCB(ezmqEventHandle_t event)
+void printByteData(ezmqMsgHandle_t byteData)
 {
-    printf("\n------ [App] SUB callback  -----\n");
-    printEvent(event);
+    printf("\n--------------------------------------\n");
+    size_t size;
+    ezmqGetDataLength(byteData, &size);
+    printf("Byte data length: %d\n", size);
+    uint8_t *mData;
+    ezmqGetByteData(byteData, &mData);
+    size_t i=0;
+    while (i<size)
+    {
+        printf("%04x ", mData[i]);
+        i++;
+    }
+    printf("\n----------------------------------------\n");
 }
 
-void subTopicCB(const char * topic, ezmqEventHandle_t event)
+void subCB(ezmqMsgHandle_t event, CEZMQContentType contentType)
+{
+    printf("\n------ [App] SUB callback  -----\n");
+    if(CEZMQ_CONTENT_TYPE_PROTOBUF == contentType)
+    {
+        printf("Content-Type: CEZMQ_CONTENT_TYPE_PROTOBUF");
+        printEvent(event);
+    }
+    else if(CEZMQ_CONTENT_TYPE_BYTEDATA == contentType)
+    {
+        printf("Content-Type: CEZMQ_CONTENT_TYPE_BYTEDATA");
+        printByteData(event);
+    }
+}
+
+void subTopicCB(const char * topic, ezmqMsgHandle_t event, CEZMQContentType contentType)
 {
     printf("\n----- [App] SUB topic callback -----\n");
     printf("\nTopic: %s\n", topic);
-    printEvent(event);
+    if(CEZMQ_CONTENT_TYPE_PROTOBUF == contentType)
+    {
+        printf("Content-Type: CEZMQ_CONTENT_TYPE_PROTOBUF");
+        printEvent(event);
+    }
+    else if(CEZMQ_CONTENT_TYPE_BYTEDATA == contentType)
+    {
+        printf("Content-Type: CEZMQ_CONTENT_TYPE_BYTEDATA");
+        printByteData(event);
+    }
 }
 
 void printError()
@@ -219,10 +256,6 @@ int main(int argc, char* argv[])
     // conditional wait to prevent main loop from exit
     pthread_mutex_lock(&g_mutex);
     pthread_cond_wait(&g_cv, &g_mutex);
-
-    //stop subscriber
-    result =  ezmqStopSubscriber(subscriber);
-    printf("\nSubscriber stop [result]: %d", result);
 
     //destroy subscriber
     result =  ezmqDestroySubscriber(&subscriber);

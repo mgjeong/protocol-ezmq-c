@@ -97,5 +97,11 @@ cezmq_reading_test = cezmq_test_env.Program('cezmq_reading_test',
 Alias("cezmq_reading_test", cezmq_reading_test)
 cezmq_test_env.AppendTarget('cezmq_reading_test')
 
+cezmq_bytedata_test_src = cezmq_test_env.Glob('./cezmqbytedatatest.cpp')
+cezmq_bytedata_test = cezmq_test_env.Program('cezmq_bytedata_test',
+                                         cezmq_bytedata_test_src)
+Alias("cezmq_bytedata_test", cezmq_bytedata_test)
+cezmq_test_env.AppendTarget('cezmq_bytedata_test')
+
 if env.get('TEST') == '1':
 	run_test(cezmq_test_env, '', 'unittests/cezmq_api_test', cezmq_api_test)

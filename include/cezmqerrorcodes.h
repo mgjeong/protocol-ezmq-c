@@ -28,6 +28,8 @@
 #define VERIFY_NON_NULL_TOPIC(PARAM) if (!PARAM){ return CEZMQ_INVALID_TOPIC; }
 #define ALLOC_ASSERT(PARAM) if (!PARAM){ abort(); }
 
+typedef void * ezmqMsgHandle_t;
+
 /**
 * @enum CEZMQErrorCode
 * ezmq service error codes.
@@ -36,7 +38,8 @@ typedef enum
 {
     CEZMQ_OK = 0,
     CEZMQ_ERROR,
-    CEZMQ_INVALID_TOPIC
+    CEZMQ_INVALID_TOPIC,
+    CEZMQ_INVALID_CONTENT_TYPE
 } CEZMQErrorCode;
 
 /**
@@ -50,6 +53,18 @@ typedef enum
     CEZMQ_INITIALIZED,
     CEZMQ_TERMINATED
 } CEZMQStatusCode;
+
+/**
+* @enum CEZMQContentType
+* EZMQ message's content types.
+*/
+typedef enum
+{
+    CEZMQ_CONTENT_TYPE_PROTOBUF = 0,
+    CEZMQ_CONTENT_TYPE_BYTEDATA,
+    CEZMQ_CONTENT_TYPE_AML,  //Not in use as of now
+    CEZMQ_CONTENT_TYPE_JSON  //Not in use as of now
+} CEZMQContentType;
 
 #endif //__EZMQ_ERRORCODES_H_INCLUDED__
 

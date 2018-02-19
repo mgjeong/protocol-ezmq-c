@@ -18,6 +18,7 @@
 #include "cezmqpublisher.h"
 #include "EZMQPublisher.h"
 #include "Event.pb.h"
+#include "EZMQByteData.h"
 
 using namespace ezmq;
 
@@ -66,25 +67,51 @@ CEZMQErrorCode ezmqStartPublisher(ezmqPubHandle_t pubHandle)
     return CEZMQErrorCode(publisherObj->start());
 }
 
-CEZMQErrorCode ezmqPublish(ezmqPubHandle_t pubHandle, ezmqEventHandle_t event)
+CEZMQErrorCode ezmqPublish(ezmqPubHandle_t pubHandle, const ezmqMsgHandle_t event)
 {
     VERIFY_NON_NULL(pubHandle)
     VERIFY_NON_NULL(event)
     EZMQPublisher *publisherObj = getPubInstance(pubHandle);
-    return CEZMQErrorCode(publisherObj->publish(*(static_cast<ezmq::Event *>(event))));
+
+    const ezmq::EZMQMessage *ezmqMessage = static_cast<const ezmq::EZMQMessage *>(event);
+    if(EZMQ_CONTENT_TYPE_PROTOBUF == ezmqMessage->getContentType())
+    {
+        return CEZMQErrorCode(publisherObj->publish(*(static_cast<const ezmq::Event *>(event))));
+    }
+    else if(EZMQ_CONTENT_TYPE_BYTEDATA == ezmqMessage->getContentType())
+    {
+        return CEZMQErrorCode(publisherObj->publish(*(static_cast<const ezmq::EZMQByteData *>(event))));
+    }
+    else
+    {
+        return CEZMQ_INVALID_CONTENT_TYPE;
+    }
 }
 
-CEZMQErrorCode ezmqPublishOnTopic(ezmqPubHandle_t pubHandle, const char *topic, ezmqEventHandle_t event)
+CEZMQErrorCode ezmqPublishOnTopic(ezmqPubHandle_t pubHandle, const char *topic, const ezmqMsgHandle_t event)
 {
     VERIFY_NON_NULL(pubHandle)
     VERIFY_NON_NULL(event)
     VERIFY_NON_NULL_TOPIC(topic)
     EZMQPublisher *publisherObj = getPubInstance(pubHandle);
-    return CEZMQErrorCode(publisherObj->publish(topic, *(static_cast<ezmq::Event *>(event))));
+
+    const ezmq::EZMQMessage *ezmqMessage = static_cast<const ezmq::EZMQMessage *>(event);
+    if(EZMQ_CONTENT_TYPE_PROTOBUF == ezmqMessage->getContentType())
+    {
+        return CEZMQErrorCode(publisherObj->publish(topic, *(static_cast<const ezmq::Event *>(event))));
+    }
+    else if(EZMQ_CONTENT_TYPE_BYTEDATA == ezmqMessage->getContentType())
+    {
+        return CEZMQErrorCode(publisherObj->publish(topic, *(static_cast<const ezmq::EZMQByteData *>(event))));
+    }
+    else
+    {
+        return CEZMQ_INVALID_CONTENT_TYPE;
+    }
 }
 
 CEZMQErrorCode ezmqPublishOnTopicList(ezmqPubHandle_t pubHandle, const char ** topicList,
-        int listSize, ezmqEventHandle_t event)
+        int listSize, const ezmqMsgHandle_t event)
 {
     VERIFY_NON_NULL(pubHandle)
     VERIFY_NON_NULL(event)
@@ -99,7 +126,20 @@ CEZMQErrorCode ezmqPublishOnTopicList(ezmqPubHandle_t pubHandle, const char ** t
     {
         topics.push_back(topicList[i]);
     }
-    return CEZMQErrorCode(publisherObj->publish(topics, *(static_cast<ezmq::Event *>(event))));
+
+    const ezmq::EZMQMessage *ezmqMessage = static_cast<const ezmq::EZMQMessage *>(event);
+    if(EZMQ_CONTENT_TYPE_PROTOBUF == ezmqMessage->getContentType())
+    {
+        return CEZMQErrorCode(publisherObj->publish(topics, *(static_cast<const ezmq::Event *>(event))));
+    }
+    else if(EZMQ_CONTENT_TYPE_BYTEDATA == ezmqMessage->getContentType())
+    {
+        return CEZMQErrorCode(publisherObj->publish(topics, *(static_cast<const ezmq::EZMQByteData *>(event))));
+    }
+    else
+    {
+        return CEZMQ_INVALID_CONTENT_TYPE;
+    }
 }
 
 CEZMQErrorCode ezmqStopPublisher(ezmqPubHandle_t pubHandle)
