@@ -90,7 +90,7 @@ void printByteData(ezmqMsgHandle_t byteData)
     printf("\n--------------------------------------\n");
     size_t size;
     ezmqGetDataLength(byteData, &size);
-    printf("Byte data length: %d\n", size);
+    printf("Byte data length: %zd\n", size);
     uint8_t *mData;
     ezmqGetByteData(byteData, &mData);
     size_t i=0;

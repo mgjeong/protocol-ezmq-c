@@ -47,7 +47,7 @@ TEST_F(CEZMQByteDataTest, constructByteData)
     ASSERT_EQ(CEZMQ_OK, result);
 }
 
-TEST_F(CEZMQByteDataTest, constructNullByteData)
+TEST_F(CEZMQByteDataTest, DISABLED_constructNullByteData)
 {
     char byteArray[] = { 0x40, 0x05, 0x10, 0x11, 0x12 };
     CEZMQErrorCode result = ezmqCreateByteData(&mByteDataHandle, NULL, 0);
