@@ -204,17 +204,21 @@ TEST_F(CEZMQPublisherTest, pubPublishTopicList)
     EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopicList(mPublisher, topicList, 5,  event));
     EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopicList(mPublisher, topicList, 5,  byteData));
     topicList = (const char **)calloc(3, sizeof(char *));
-    topicList[0] = "topic1";
-    EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopicList(mPublisher, topicList, 0,  event));
-    EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopicList(mPublisher, topicList, 0,  byteData));
-    topicList[1] = "";
-    EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopicList(mPublisher, topicList, 2,  event));
-    EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopicList(mPublisher, topicList, 2,  byteData));
+    if(topicList)
+    {
+        topicList[0] = "topic1";
+        EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopicList(mPublisher, topicList, 0,  event));
+        EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopicList(mPublisher, topicList, 0,  byteData));
+        topicList[1] = "";
+        EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopicList(mPublisher, topicList, 2,  event));
+        EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqPublishOnTopicList(mPublisher, topicList, 2,  byteData));
 
-    topicList[0] = "topic1";
-    topicList[1] = "topic2";
-    EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopicList(mPublisher, topicList, 2,  event));
-    EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopicList(mPublisher, topicList, 2,  byteData));
+        topicList[0] = "topic1";
+        topicList[1] = "topic2";
+        EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopicList(mPublisher, topicList, 2,  event));
+        EXPECT_EQ(CEZMQ_OK, ezmqPublishOnTopicList(mPublisher, topicList, 2,  byteData));
+        free(topicList);
+    }
 }
 
 TEST_F(CEZMQPublisherTest, pubGetPort)
