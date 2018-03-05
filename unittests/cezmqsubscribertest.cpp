@@ -125,14 +125,18 @@ TEST_F(CEZMQSubscriberTest, subSubscribeTopicList)
     EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqSubscribeForTopicList(mSubscriber, topicList, 5 ));
 
     topicList = (const char **)calloc(3, sizeof(char *));
-    topicList[0] = "topic1";
-    topicList[1] = "";
-    EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqSubscribeForTopicList(mSubscriber, topicList, 2));
+    if (topicList)
+    {
+        topicList[0] = "topic1";
+        topicList[1] = "";
+        EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqSubscribeForTopicList(mSubscriber, topicList, 2));
 
-    topicList[0] = "topic1";
-    topicList[1] = "topic2";
-    EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqSubscribeForTopicList(mSubscriber, topicList, 0));
-    EXPECT_EQ(CEZMQ_OK, ezmqSubscribeForTopicList(mSubscriber, topicList, 2));
+        topicList[0] = "topic1";
+        topicList[1] = "topic2";
+        EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqSubscribeForTopicList(mSubscriber, topicList, 0));
+        EXPECT_EQ(CEZMQ_OK, ezmqSubscribeForTopicList(mSubscriber, topicList, 2));
+        free(topicList);
+    }
 }
 
 TEST_F(CEZMQSubscriberTest, subSubscribeTopics)
@@ -202,16 +206,20 @@ TEST_F(CEZMQSubscriberTest, subUnSubscribeTopicList)
     EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqUnSubscribeForTopicList(mSubscriber, topicList, 5 ));
 
     topicList = (const char **)calloc(3, sizeof(char *));
-    topicList[0] = "topic1";
-    topicList[1] = "";
-    EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqSubscribeForTopicList(mSubscriber, topicList, 2));
-    EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqUnSubscribeForTopicList(mSubscriber, topicList, 2));
+    if(topicList)
+    {
+        topicList[0] = "topic1";
+        topicList[1] = "";
+        EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqSubscribeForTopicList(mSubscriber, topicList, 2));
+        EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqUnSubscribeForTopicList(mSubscriber, topicList, 2));
 
-    topicList[0] = "topic1";
-    topicList[1] = "topic2";
-    EXPECT_EQ(CEZMQ_OK, ezmqSubscribeForTopicList(mSubscriber, topicList, 2));
-    EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqUnSubscribeForTopicList(mSubscriber, topicList, 0));
-    EXPECT_EQ(CEZMQ_OK, ezmqUnSubscribeForTopicList(mSubscriber, topicList, 2));
+        topicList[0] = "topic1";
+        topicList[1] = "topic2";
+        EXPECT_EQ(CEZMQ_OK, ezmqSubscribeForTopicList(mSubscriber, topicList, 2));
+        EXPECT_EQ(CEZMQ_INVALID_TOPIC, ezmqUnSubscribeForTopicList(mSubscriber, topicList, 0));
+        EXPECT_EQ(CEZMQ_OK, ezmqUnSubscribeForTopicList(mSubscriber, topicList, 2));
+        free(topicList);
+    }
 }
 
 TEST_F(CEZMQSubscriberTest, subGetIp)
