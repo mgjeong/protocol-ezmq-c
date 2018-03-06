@@ -256,6 +256,7 @@ int main(int argc, char* argv[])
     // conditional wait to prevent main loop from exit
     pthread_mutex_lock(&g_mutex);
     pthread_cond_wait(&g_cv, &g_mutex);
+    pthread_mutex_unlock(&g_mutex);
 
     //destroy subscriber
     result =  ezmqDestroySubscriber(&subscriber);
