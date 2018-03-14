@@ -1,5 +1,5 @@
 #!/bin/bash
-./build_auto.sh --target_arch=armhf-qemu --with_dependencies=true
+./build_auto.sh --target_arch=armhf-native --with_dependencies=true
 
 cd out/linux/armhf/release/unittests
 
