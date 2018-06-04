@@ -116,29 +116,6 @@ void sigint(int signal)
     {
         exit(0);
     }
-
-    // stop publisher
-    CEZMQErrorCode result = ezmqStopPublisher(gPublisher);
-    if(result != CEZMQ_OK)
-    {
-        printf("\npublish API: error occured\n");
-    }
-    printf("\nstop API  [result]:  %d", result);
-
-    //Destroy publisher
-    result =  ezmqDestroyPublisher(&gPublisher);
-    if(result != CEZMQ_OK)
-    {
-        printf("\nDestroy publisher: error occured\n");
-    }
-    printf("\nDestroy publisher [result]:  %d", result);
-
-    //Destroy event
-    result =  ezmqDestroyEvent(&gEventHandle);
-    if(result != CEZMQ_OK)
-    {
-        printf("\nDestroy event: error occured\n");
-    }
     gIsStarted = 0;
 }
 
@@ -214,13 +191,8 @@ int main(int argc, char* argv[])
     printf("\n--------- Will Publish 15 events at interval of 2 seconds --------- \n");
     gIsStarted = 1;
     int i = 1;
-    while(i <= 15)
+    while(i <= 15 && 1 == gIsStarted)
     {
-        if(0 == gIsStarted)
-        {
-            printf("\npublish Stopped\n");
-            return -1;
-        }
         if (NULL == topic)
         {
             result = ezmqPublish(gPublisher, gEventHandle);
