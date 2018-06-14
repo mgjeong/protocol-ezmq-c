@@ -20,6 +20,7 @@
 #include <string.h>
 #include <unistd.h>
 #include<stdint.h>
+#include <signal.h>
 
 #include "cezmqapi.h"
 #include "cezmqpublisher.h"
@@ -27,6 +28,10 @@
 #include "cezmqbytedata.h"
 #include "cezmqreading.h"
 #include "cezmqerrorcodes.h"
+
+ezmqPubHandle_t gPublisher;
+ezmqEventHandle_t gEventHandle;
+int gIsStarted = 0;
 
 void startCB(CEZMQErrorCode code)
 {
@@ -104,6 +109,16 @@ void printError()
     printf("      ./cpublisher -port 5562 -t topic1\n");
 }
 
+void sigint(int signal)
+{
+    printf("\nInterupt signal:  %d\n", signal);
+    if(0 == gIsStarted)
+    {
+        exit(0);
+    }
+    gIsStarted = 0;
+}
+
 int main(int argc, char* argv[])
 {
     int port = 5562;
@@ -137,6 +152,10 @@ int main(int argc, char* argv[])
         }
     }
 
+    //this handler is added to check stop API
+    signal(SIGINT, sigint);
+    gIsStarted = 0;
+
     //initialize ezmq service
     result = ezmqInitialize();
     printf("\nInitialize API [result]: %d", result);
@@ -146,8 +165,7 @@ int main(int argc, char* argv[])
     }
 
     //Create EZMQ Publisher
-    ezmqPubHandle_t publisher;
-    result = ezmqCreatePublisher(port, startCB, stopCB, errorCB, &publisher);
+    result = ezmqCreatePublisher(port, startCB, stopCB, errorCB, &gPublisher);
     printf("\nCreate Publisher [result]: %d", result);
     if(result != CEZMQ_OK)
     {
@@ -155,7 +173,7 @@ int main(int argc, char* argv[])
     }
 
     //Start EZMQ Publisher
-    result= ezmqStartPublisher(publisher);
+    result= ezmqStartPublisher(gPublisher);
     printf("\nPublisher start [result]: %d", result);
     if(result != CEZMQ_OK)
     {
@@ -163,7 +181,7 @@ int main(int argc, char* argv[])
     }
 
     //form an event to publish
-    ezmqEventHandle_t eventHandle = createEvent();
+    gEventHandle = createEvent();
 
     // This delay is added to prevent ZeroMQ first packet drop during
     // initial connection of publisher and subscriber.
@@ -171,16 +189,17 @@ int main(int argc, char* argv[])
 
     //Publish events
     printf("\n--------- Will Publish 15 events at interval of 2 seconds --------- \n");
+    gIsStarted = 1;
     int i = 1;
-    while(i <= 15)
+    while(i <= 15 && 1 == gIsStarted)
     {
         if (NULL == topic)
         {
-            result = ezmqPublish(publisher, eventHandle);
+            result = ezmqPublish(gPublisher, gEventHandle);
         }
         else
         {
-            result = ezmqPublishOnTopic(publisher, topic, eventHandle);
+            result = ezmqPublishOnTopic(gPublisher, topic, gEventHandle);
         }
 
         if(result != CEZMQ_OK)
@@ -194,7 +213,7 @@ int main(int argc, char* argv[])
     }
 
     // stop publisher
-    result = ezmqStopPublisher(publisher);
+    result = ezmqStopPublisher(gPublisher);
     if(result != CEZMQ_OK)
     {
         printf("\npublish API: error occured\n");
@@ -203,7 +222,7 @@ int main(int argc, char* argv[])
     printf("\nstop API  [result]:  %d", result);
 
     //Destroy publisher
-    result =  ezmqDestroyPublisher(&publisher);
+    result =  ezmqDestroyPublisher(&gPublisher);
     if(result != CEZMQ_OK)
     {
         printf("\nDestroy publisher: error occured\n");
@@ -212,7 +231,7 @@ int main(int argc, char* argv[])
     printf("\nDestroy publisher [result]:  %d", result);
 
     //Destroy event
-    result =  ezmqDestroyEvent(&eventHandle);
+    result =  ezmqDestroyEvent(&gEventHandle);
     if(result != CEZMQ_OK)
     {
         printf("\nDestroy event: error occured\n");
