@@ -8,9 +8,9 @@ var cezmqpublisher_8h =
     [ "ezmqCreatePublisher", "cezmqpublisher_8h.html#af4b823730e6e3a1e3ad76af6d70a085c", null ],
     [ "ezmqDestroyPublisher", "cezmqpublisher_8h.html#a2016469ba2e566cd61f15523c941ea9c", null ],
     [ "ezmqGetPubPort", "cezmqpublisher_8h.html#ab68edf85cc50c03e266a38b215ea85e4", null ],
-    [ "ezmqPublish", "cezmqpublisher_8h.html#a59bd9297cc8ed5e11ccd904b538c48c3", null ],
-    [ "ezmqPublishOnTopic", "cezmqpublisher_8h.html#a8ec78899cee7ca58d8516ff710d2606c", null ],
-    [ "ezmqPublishOnTopicList", "cezmqpublisher_8h.html#acaf73fbbbe4c4d786a2e9b4975bc5ed4", null ],
+    [ "ezmqPublish", "cezmqpublisher_8h.html#a2b8b5f271d4c0bd12bed13c20a10031e", null ],
+    [ "ezmqPublishOnTopic", "cezmqpublisher_8h.html#a8c1a8152b7567303940c3500e3d764c9", null ],
+    [ "ezmqPublishOnTopicList", "cezmqpublisher_8h.html#ab80e93e969b72f157d198f9a720a786e", null ],
     [ "ezmqStartPublisher", "cezmqpublisher_8h.html#a708e6c35e9ec70a64208b65013541ee3", null ],
     [ "ezmqStopPublisher", "cezmqpublisher_8h.html#a4ec957dcffc9c9362c37e0bdc712d929", null ]
 ];

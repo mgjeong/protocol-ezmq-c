@@ -1,8 +1,8 @@
 var cezmqsubscriber_8h =
 [
     [ "EZMQ_EXPORT", "cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6", null ],
-    [ "csubCB", "cezmqsubscriber_8h.html#af1e978f1399c8ea113090614e07fec31", null ],
-    [ "csubTopicCB", "cezmqsubscriber_8h.html#a6ebf26d36cdc1dafa756e3da65398e60", null ],
+    [ "csubCB", "cezmqsubscriber_8h.html#a474ebe30402535a5298f3be4df13bf94", null ],
+    [ "csubTopicCB", "cezmqsubscriber_8h.html#a142edde8e787966ea1accd20eefec54d", null ],
     [ "ezmqSubHandle_t", "cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91", null ],
     [ "emzqStartSubscriber", "cezmqsubscriber_8h.html#a972f268ab35ddc6f142e30f1899a9021", null ],
     [ "ezmqCreateSubscriber", "cezmqsubscriber_8h.html#a5cf05a8790e1017eeec3e69f9c5cc9d0", null ],
