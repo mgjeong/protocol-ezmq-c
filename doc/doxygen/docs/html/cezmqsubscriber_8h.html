@@ -123,16 +123,16 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a44924d65fd1fe409a6c8a40b3eed0f91"><td class="memItemLeft" align="right" valign="top">typedef void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a></td></tr>
 <tr class="memdesc:a44924d65fd1fe409a6c8a40b3eed0f91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscriber handle.  <a href="#a44924d65fd1fe409a6c8a40b3eed0f91">More...</a><br /></td></tr>
 <tr class="separator:a44924d65fd1fe409a6c8a40b3eed0f91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1e978f1399c8ea113090614e07fec31"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#af1e978f1399c8ea113090614e07fec31">csubCB</a> )(<a class="el" href="cezmqevent_8h.html#a6d0a4065016787213d72a4c7474defac">ezmqEventHandle_t</a> event)</td></tr>
-<tr class="memdesc:af1e978f1399c8ea113090614e07fec31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callbacks to get all the subscribed events.  <a href="#af1e978f1399c8ea113090614e07fec31">More...</a><br /></td></tr>
-<tr class="separator:af1e978f1399c8ea113090614e07fec31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ebf26d36cdc1dafa756e3da65398e60"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a6ebf26d36cdc1dafa756e3da65398e60">csubTopicCB</a> )(const char *topic, <a class="el" href="cezmqevent_8h.html#a6d0a4065016787213d72a4c7474defac">ezmqEventHandle_t</a> event)</td></tr>
-<tr class="memdesc:a6ebf26d36cdc1dafa756e3da65398e60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callbacks to get all the subscribed events for a specific topic.  <a href="#a6ebf26d36cdc1dafa756e3da65398e60">More...</a><br /></td></tr>
-<tr class="separator:a6ebf26d36cdc1dafa756e3da65398e60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a474ebe30402535a5298f3be4df13bf94"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a474ebe30402535a5298f3be4df13bf94">csubCB</a> )(const <a class="el" href="cezmqerrorcodes_8h.html#a5259b1c3cd0bc04e148491878631749e">ezmqMsgHandle_t</a> event, <a class="el" href="cezmqerrorcodes_8h.html#a9218993bb9ad45dffa785fa4cd929f01">CEZMQContentType</a> contentType)</td></tr>
+<tr class="memdesc:a474ebe30402535a5298f3be4df13bf94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callbacks to get all the subscribed events.  <a href="#a474ebe30402535a5298f3be4df13bf94">More...</a><br /></td></tr>
+<tr class="separator:a474ebe30402535a5298f3be4df13bf94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a142edde8e787966ea1accd20eefec54d"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a142edde8e787966ea1accd20eefec54d">csubTopicCB</a> )(const char *topic, const <a class="el" href="cezmqerrorcodes_8h.html#a5259b1c3cd0bc04e148491878631749e">ezmqMsgHandle_t</a> event, <a class="el" href="cezmqerrorcodes_8h.html#a9218993bb9ad45dffa785fa4cd929f01">CEZMQContentType</a> contentType)</td></tr>
+<tr class="memdesc:a142edde8e787966ea1accd20eefec54d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callbacks to get all the subscribed events for a specific topic.  <a href="#a142edde8e787966ea1accd20eefec54d">More...</a><br /></td></tr>
+<tr class="separator:a142edde8e787966ea1accd20eefec54d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a5cf05a8790e1017eeec3e69f9c5cc9d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a5cf05a8790e1017eeec3e69f9c5cc9d0">ezmqCreateSubscriber</a> (const char *ip, int port, <a class="el" href="cezmqsubscriber_8h.html#af1e978f1399c8ea113090614e07fec31">csubCB</a> subcb, <a class="el" href="cezmqsubscriber_8h.html#a6ebf26d36cdc1dafa756e3da65398e60">csubTopicCB</a> topiccb, <a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> *subHandle)</td></tr>
+<tr class="memitem:a5cf05a8790e1017eeec3e69f9c5cc9d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a5cf05a8790e1017eeec3e69f9c5cc9d0">ezmqCreateSubscriber</a> (const char *ip, int port, <a class="el" href="cezmqsubscriber_8h.html#a474ebe30402535a5298f3be4df13bf94">csubCB</a> subcb, <a class="el" href="cezmqsubscriber_8h.html#a142edde8e787966ea1accd20eefec54d">csubTopicCB</a> topiccb, <a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> *subHandle)</td></tr>
 <tr class="memdesc:a5cf05a8790e1017eeec3e69f9c5cc9d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create ezmq Subscriber with given ip, port and callbacks.  <a href="#a5cf05a8790e1017eeec3e69f9c5cc9d0">More...</a><br /></td></tr>
 <tr class="separator:a5cf05a8790e1017eeec3e69f9c5cc9d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a972f268ab35ddc6f142e30f1899a9021"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a972f268ab35ddc6f142e30f1899a9021">emzqStartSubscriber</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle)</td></tr>
@@ -185,12 +185,12 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a class="anchor" id="af1e978f1399c8ea113090614e07fec31"></a>
+<a class="anchor" id="a474ebe30402535a5298f3be4df13bf94"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(* csubCB)(<a class="el" href="cezmqevent_8h.html#a6d0a4065016787213d72a4c7474defac">ezmqEventHandle_t</a> event)</td>
+          <td class="memname">typedef void(* csubCB)(const <a class="el" href="cezmqerrorcodes_8h.html#a5259b1c3cd0bc04e148491878631749e">ezmqMsgHandle_t</a> event, <a class="el" href="cezmqerrorcodes_8h.html#a9218993bb9ad45dffa785fa4cd929f01">CEZMQContentType</a> contentType)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -199,12 +199,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a6ebf26d36cdc1dafa756e3da65398e60"></a>
+<a class="anchor" id="a142edde8e787966ea1accd20eefec54d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(* csubTopicCB)(const char *topic, <a class="el" href="cezmqevent_8h.html#a6d0a4065016787213d72a4c7474defac">ezmqEventHandle_t</a> event)</td>
+          <td class="memname">typedef void(* csubTopicCB)(const char *topic, const <a class="el" href="cezmqerrorcodes_8h.html#a5259b1c3cd0bc04e148491878631749e">ezmqMsgHandle_t</a> event, <a class="el" href="cezmqerrorcodes_8h.html#a9218993bb9ad45dffa785fa4cd929f01">CEZMQContentType</a> contentType)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -272,13 +272,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="cezmqsubscriber_8h.html#af1e978f1399c8ea113090614e07fec31">csubCB</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="cezmqsubscriber_8h.html#a474ebe30402535a5298f3be4df13bf94">csubCB</a>&#160;</td>
           <td class="paramname"><em>subcb</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="cezmqsubscriber_8h.html#a6ebf26d36cdc1dafa756e3da65398e60">csubTopicCB</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="cezmqsubscriber_8h.html#a142edde8e787966ea1accd20eefec54d">csubTopicCB</a>&#160;</td>
           <td class="paramname"><em>topiccb</em>, </td>
         </tr>
         <tr>
@@ -652,7 +652,7 @@ Functions</h2></td></tr>
 </div><!-- doc-content -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
-        <li class="footer">Generated on Wed Jan 17 2018 20:28:25</li>
+        <li class="footer">Generated on Wed Jul 11 2018 15:29:18</li>
     </ul>
 </div>
 </body>

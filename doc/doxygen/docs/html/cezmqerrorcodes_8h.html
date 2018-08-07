@@ -101,6 +101,7 @@ $(document).ready(function(){initNavTree('cezmqerrorcodes_8h.html','');});
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">cezmqerrorcodes.h File Reference</div>  </div>
@@ -121,11 +122,17 @@ Macros</h2></td></tr>
 <tr class="memitem:a4db3744017b846485f374000bfe37ca4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqerrorcodes_8h.html#a4db3744017b846485f374000bfe37ca4">ALLOC_ASSERT</a>(PARAM)&#160;&#160;&#160;if (!PARAM){ abort(); }</td></tr>
 <tr class="separator:a4db3744017b846485f374000bfe37ca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a5259b1c3cd0bc04e148491878631749e"><td class="memItemLeft" align="right" valign="top">typedef void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqerrorcodes_8h.html#a5259b1c3cd0bc04e148491878631749e">ezmqMsgHandle_t</a></td></tr>
+<tr class="separator:a5259b1c3cd0bc04e148491878631749e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:a209941992030cc9fa1fe29b482049acf"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> { <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acfa39a4cb3504a990ee4a17b6cc77bf5f1d">CEZMQ_OK</a> = 0, 
 <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acfa3f2c96b563bfc13148f96de77a00a2c9">CEZMQ_ERROR</a>, 
-<a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acfa081e82000a650b9884fe9276caa274c4">CEZMQ_INVALID_TOPIC</a>
+<a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acfa081e82000a650b9884fe9276caa274c4">CEZMQ_INVALID_TOPIC</a>, 
+<a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acfac56acb0cdb7fb13f3aefd4494e29af10">CEZMQ_INVALID_CONTENT_TYPE</a>
  }</td></tr>
 <tr class="memdesc:a209941992030cc9fa1fe29b482049acf"><td class="mdescLeft">&#160;</td><td class="mdescRight">ezmq service error codes.  <a href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">More...</a><br /></td></tr>
 <tr class="separator:a209941992030cc9fa1fe29b482049acf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,6 +143,13 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:ab0dd8ccb1e19fd43169b46054b79a243"><td class="mdescLeft">&#160;</td><td class="mdescRight">ezmq Service status codes.  <a href="cezmqerrorcodes_8h.html#ab0dd8ccb1e19fd43169b46054b79a243">More...</a><br /></td></tr>
 <tr class="separator:ab0dd8ccb1e19fd43169b46054b79a243"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9218993bb9ad45dffa785fa4cd929f01"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqerrorcodes_8h.html#a9218993bb9ad45dffa785fa4cd929f01">CEZMQContentType</a> { <a class="el" href="cezmqerrorcodes_8h.html#a9218993bb9ad45dffa785fa4cd929f01a9c6713dd58b7c7d618eebdf4ba66108b">CEZMQ_CONTENT_TYPE_PROTOBUF</a> = 0, 
+<a class="el" href="cezmqerrorcodes_8h.html#a9218993bb9ad45dffa785fa4cd929f01a558117b9aa1145893cff44b24b57bf42">CEZMQ_CONTENT_TYPE_BYTEDATA</a>, 
+<a class="el" href="cezmqerrorcodes_8h.html#a9218993bb9ad45dffa785fa4cd929f01abf621613af4beed1fe20668c17ed2d2b">CEZMQ_CONTENT_TYPE_AML</a>, 
+<a class="el" href="cezmqerrorcodes_8h.html#a9218993bb9ad45dffa785fa4cd929f01a10c765e5f1f22374610edb954f36dc3d">CEZMQ_CONTENT_TYPE_JSON</a>
+ }</td></tr>
+<tr class="memdesc:a9218993bb9ad45dffa785fa4cd929f01"><td class="mdescLeft">&#160;</td><td class="mdescRight">EZMQ message's content types.  <a href="cezmqerrorcodes_8h.html#a9218993bb9ad45dffa785fa4cd929f01">More...</a><br /></td></tr>
+<tr class="separator:a9218993bb9ad45dffa785fa4cd929f01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file contains error codes of CEZMQ service possibly return to application. </p>
@@ -188,7 +202,44 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a class="anchor" id="a5259b1c3cd0bc04e148491878631749e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void* <a class="el" href="cezmqerrorcodes_8h.html#a5259b1c3cd0bc04e148491878631749e">ezmqMsgHandle_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="a9218993bb9ad45dffa785fa4cd929f01"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="cezmqerrorcodes_8h.html#a9218993bb9ad45dffa785fa4cd929f01">CEZMQContentType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>EZMQ message's content types. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a9218993bb9ad45dffa785fa4cd929f01a9c6713dd58b7c7d618eebdf4ba66108b"></a>CEZMQ_CONTENT_TYPE_PROTOBUF&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a9218993bb9ad45dffa785fa4cd929f01a558117b9aa1145893cff44b24b57bf42"></a>CEZMQ_CONTENT_TYPE_BYTEDATA&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a9218993bb9ad45dffa785fa4cd929f01abf621613af4beed1fe20668c17ed2d2b"></a>CEZMQ_CONTENT_TYPE_AML&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a9218993bb9ad45dffa785fa4cd929f01a10c765e5f1f22374610edb954f36dc3d"></a>CEZMQ_CONTENT_TYPE_JSON&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
+
+</div>
+</div>
 <a class="anchor" id="a209941992030cc9fa1fe29b482049acf"></a>
 <div class="memitem">
 <div class="memproto">
@@ -206,6 +257,8 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a class="anchor" id="a209941992030cc9fa1fe29b482049acfa3f2c96b563bfc13148f96de77a00a2c9"></a>CEZMQ_ERROR&#160;</td><td class="fielddoc">
 </td></tr>
 <tr><td class="fieldname"><a class="anchor" id="a209941992030cc9fa1fe29b482049acfa081e82000a650b9884fe9276caa274c4"></a>CEZMQ_INVALID_TOPIC&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a209941992030cc9fa1fe29b482049acfac56acb0cdb7fb13f3aefd4494e29af10"></a>CEZMQ_INVALID_CONTENT_TYPE&#160;</td><td class="fielddoc">
 </td></tr>
 </table>
 
@@ -239,7 +292,7 @@ Enumerations</h2></td></tr>
 </div><!-- doc-content -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
-        <li class="footer">Generated on Wed Jan 17 2018 20:28:25</li>
+        <li class="footer">Generated on Wed Jul 11 2018 15:29:18</li>
     </ul>
 </div>
 </body>
