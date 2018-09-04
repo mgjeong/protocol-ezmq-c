@@ -55,14 +55,10 @@ usage() {
     echo "      --timestamp=[yes|no] (default: yes)          :  Remove Time Stamp from the report output. If directory exits, overwrites the report to the same directory"
     echo "      --ut_report=[yes|no] (default: yes)          :  The unit test report will be generated in xml format (as gtest only supports xml)."
     echo "      --target_arch=[x86|x86_64] (default: x86)    :  Choose Target Architecture for running test executables."
-    echo "Pre-requisite:"
-    echo "  Built ./dependencies/ezmq-protocol-cpp in debug mode"
     echo "Example:"
-    echo "  $ cd ~/ezmq-protocol-c/dependencies/ezmq-protocol-cpp"
-    echo "  $ scons LOGGING=1 RELEASE=0 TARGET_ARCH=x86 TEST=0"
-    echo "  $ cd ~/ezmq-protocol-c/ "
-    echo "  $ scons LOGGING=1 RELEASE=0 TARGET_ARCH=x86 TEST=0"
-    echo "  $ ./generate_report.sh --format=html --timestamp=yes --ut_report=yes"
+    echo "  $ ./generate_report.sh --target_arch=x86_64 --format=html --timestamp=yes --ut_report=yes"
+    echo "Note:"
+    echo "Before running this script, Make sure CEZMQ sdk is built in debug mode and with security"
 }
 
 clean_ezmq() {
