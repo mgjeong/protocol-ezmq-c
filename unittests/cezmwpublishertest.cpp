@@ -221,6 +221,16 @@ TEST_F(CEZMQPublisherTest, pubPublishTopicList)
     }
 }
 
+TEST_F(CEZMQPublisherTest, publishSecure)
+{
+    const char *serverSecretKey = "[:X%Q3UfY+kv2A^.wv:(qy2E=bk0L][cm=mS3Hcx";
+    ezmqEventHandle_t event = getezmqEvent();
+    ASSERT_NE(nullptr, event);
+    ezmqSetServerPrivateKey(mPublisher, serverSecretKey);
+    EXPECT_EQ(CEZMQ_OK, ezmqStartPublisher(mPublisher));
+    EXPECT_EQ(CEZMQ_OK, ezmqPublish(mPublisher, event));
+}
+
 TEST_F(CEZMQPublisherTest, pubGetPort)
 {
     int port;

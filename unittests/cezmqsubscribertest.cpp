@@ -185,6 +185,24 @@ TEST_F(CEZMQSubscriberTest, subSubscribeTopics)
     EXPECT_EQ(CEZMQ_OK, ezmqSubscribeForTopic(mSubscriber, testingTopic));
 }
 
+TEST_F(CEZMQSubscriberTest, subscribeWithIpPort)
+{
+    EXPECT_EQ(CEZMQ_OK, emzqStartSubscriber(mSubscriber));
+    EXPECT_EQ(CEZMQ_OK, ezmqSubscribeWithIpPort(mSubscriber, "192.168.1.1", 5563, mTopic));
+}
+
+TEST_F(CEZMQSubscriberTest, subscribeSecured)
+{
+    const char *serverPublicKey = "tXJx&1^QE2g7WCXbF.$$TVP.wCtxwNhR8?iLi&S<";
+    const char *clientSecretKey = "ZB1@RS6Kv^zucova$kH(!o>tZCQ.<!Q)6-0aWFmW";
+    const char *clientPublicKey = "-QW?Ved(f:<::3d5tJ$[4Er&]6#9yr=vha/caBc(";
+    ezmqSetServerPublicKey(mSubscriber, serverPublicKey);
+    ezmqSetClientKeys(mSubscriber, clientSecretKey, clientPublicKey);
+    EXPECT_EQ(CEZMQ_OK, emzqStartSubscriber(mSubscriber));
+    EXPECT_EQ(CEZMQ_OK, ezmqSubscribeForTopic(mSubscriber, mTopic));
+    EXPECT_EQ(CEZMQ_OK, ezmqSubscribeWithIpPort(mSubscriber, "192.168.1.1", 5563, mTopic));
+}
+
 TEST_F(CEZMQSubscriberTest, subUnSubscribe)
 {
     EXPECT_EQ(CEZMQ_OK, emzqStartSubscriber(mSubscriber));
@@ -193,7 +211,6 @@ TEST_F(CEZMQSubscriberTest, subUnSubscribe)
     EXPECT_EQ(CEZMQ_OK, ezmqSubscribeForTopic(mSubscriber, mTopic));
     EXPECT_EQ(CEZMQ_OK, ezmqUnSubscribeForTopic(mSubscriber, mTopic));
 }
-
 
 TEST_F(CEZMQSubscriberTest, subUnSubscribeTopicList)
 {
