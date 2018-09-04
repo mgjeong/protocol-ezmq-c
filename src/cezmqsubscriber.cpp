@@ -20,6 +20,7 @@
 #include "EZMQMessage.h"
 #include "EZMQByteData.h"
 #include "Event.pb.h"
+#include "EZMQException.h"
 
 using namespace ezmq;
 
@@ -91,6 +92,42 @@ CEZMQErrorCode ezmqCreateSubscriber(const char *ip, int port, csubCB subcb,
     return CEZMQ_OK;
  }
 
+CEZMQErrorCode ezmqSetClientKeys(ezmqSubHandle_t subHandle, const char *clientPrivateKey,
+        const char *clientPublicKey)
+{
+    VERIFY_NON_NULL(subHandle)
+    VERIFY_NON_NULL(clientPrivateKey)
+    VERIFY_NON_NULL(clientPublicKey)
+    EZMQSubscriber *subscriberObj = getSubInstance(subHandle);
+    EZMQErrorCode errorCode = EZMQ_ERROR;
+    try
+    {
+        errorCode = subscriberObj->setClientKeys(clientPrivateKey, clientPublicKey);
+    }
+    catch(EZMQException &e)
+    {
+        return CEZMQErrorCode(errorCode);
+    }
+    return CEZMQErrorCode(errorCode);
+}
+
+CEZMQErrorCode ezmqSetServerPublicKey(ezmqSubHandle_t subHandle, const char *key)
+{
+    VERIFY_NON_NULL(subHandle)
+    VERIFY_NON_NULL(key)
+    EZMQSubscriber *subscriberObj = getSubInstance(subHandle);
+    EZMQErrorCode errorCode = EZMQ_ERROR;
+    try
+    {
+        errorCode = subscriberObj->setServerPublicKey(key);
+    }
+    catch(EZMQException &e)
+    {
+        return CEZMQErrorCode(errorCode);
+    }
+    return CEZMQErrorCode(errorCode);
+}
+
 CEZMQErrorCode emzqStartSubscriber(ezmqSubHandle_t subHandle)
 {
     VERIFY_NON_NULL(subHandle)
@@ -128,6 +165,16 @@ CEZMQErrorCode ezmqSubscribeForTopicList(ezmqSubHandle_t subHandle, const char *
         topics.push_back(topicList[i]);
     }
     return CEZMQErrorCode(subscriberObj->subscribe(topics));
+}
+
+CEZMQErrorCode ezmqSubscribeWithIpPort(ezmqSubHandle_t subHandle, const char *ip, int port,
+        const char *topic)
+{
+    VERIFY_NON_NULL(subHandle)
+    VERIFY_NON_NULL(ip)
+    VERIFY_NON_NULL_TOPIC(topic)
+    EZMQSubscriber *subscriberObj = getSubInstance(subHandle);
+    return CEZMQErrorCode(subscriberObj->subscribe(ip, port, topic));
 }
 
 CEZMQErrorCode ezmqUnSubscribe(ezmqSubHandle_t subHandle)
