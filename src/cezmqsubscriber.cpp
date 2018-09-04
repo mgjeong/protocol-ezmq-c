@@ -167,7 +167,7 @@ CEZMQErrorCode ezmqSubscribeForTopicList(ezmqSubHandle_t subHandle, const char *
     return CEZMQErrorCode(subscriberObj->subscribe(topics));
 }
 
-CEZMQErrorCode ezmqSubscribeWithIpPort(ezmqSubHandle_t subHandle, const char *ip, int port,
+CEZMQErrorCode ezmqSubscribeWithIpPort(ezmqSubHandle_t subHandle, const char *ip, const int port,
         const char *topic)
 {
     VERIFY_NON_NULL(subHandle)

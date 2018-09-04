@@ -92,7 +92,7 @@ EZMQ_EXPORT CEZMQErrorCode ezmqSetClientKeys(ezmqSubHandle_t subHandle,
  * (1) Key should be 40-character string encoded in the Z85 encoding format <br>
  * (2) This API should be called before start() API.
  * (3) If using the following API in secured mode: <br>
- *     ezmqSubscribeWithIpPort( ezmqSubHandle_t subHandle, const char *ip, int port, const char *topic) then,
+ *     ezmqSubscribeWithIpPort( ezmqSubHandle_t subHandle, const char *ip, const int port, const char *topic) then,
  *     ezmqSetServerPublicKey API needs to be called before that.<br>
  * (4) This API should be called, if and only if ezmq is built in secured mode otherwise, it will return CEZMQ_ERROR.
  */
@@ -169,7 +169,7 @@ EZMQ_EXPORT CEZMQErrorCode ezmqSubscribeForTopicList(ezmqSubHandle_t subHandle,
  *      API with target server public key before calling this API.
  */
 EZMQ_EXPORT CEZMQErrorCode ezmqSubscribeWithIpPort( ezmqSubHandle_t subHandle, const char *ip,
-        int port, const char *topic);
+        const int port, const char *topic);
 
 /**
  * Un-subscribe all the events from publisher.
