@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>EZMQ C Library: cezmqapi.h Source File</title>
+<title>EZMQ C Library: cezmqbytedata.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('cezmqapi_8h_source.html','');});
+$(document).ready(function(){initNavTree('cezmqbytedata_8h_source.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -100,10 +100,10 @@ $(document).ready(function(){initNavTree('cezmqapi_8h_source.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">cezmqapi.h</div>  </div>
+<div class="title">cezmqbytedata.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="cezmqapi_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*******************************************************************************</span></div>
+<a href="cezmqbytedata_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*******************************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2017 Samsung Electronics All Rights Reserved.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
@@ -120,37 +120,43 @@ $(document).ready(function(){initNavTree('cezmqapi_8h_source.html','');});
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> *******************************************************************************/</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#ifndef __EZMQ_H_INCLUDED__</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#define __EZMQ_H_INCLUDED__</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#ifndef __EZMQ_BYTEDATA_H_INCLUDED__</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#define __EZMQ_BYTEDATA_H_INCLUDED__</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="cezmqerrorcodes_8h.html">cezmqerrorcodes.h</a>&quot;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="cezmqapi_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">   29</a></span>&#160;<span class="preprocessor">#define EZMQ_EXPORT __attribute__ ((visibility(&quot;default&quot;)))</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">   29</a></span>&#160;<span class="preprocessor">#define EZMQ_EXPORT __attribute__ ((visibility(&quot;default&quot;)))</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<a class="code" href="cezmqapi_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="code" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> <a class="code" href="cezmqapi_8h.html#a61f69b13dee677a4bc5240c5b5958afd">ezmqInitialize</a>();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<a class="code" href="cezmqapi_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="code" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> <a class="code" href="cezmqapi_8h.html#a06249abda210666ec1eb5e6fdcaf82aa">ezmqTerminate</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="cezmqbytedata_8h.html#a459ef980e0b3f0094fd2712b15f89de0">   39</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">void</span> * <a class="code" href="cezmqbytedata_8h.html#a459ef980e0b3f0094fd2712b15f89de0">ezmqByteDataHandle_t</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<a class="code" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="code" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> <a class="code" href="cezmqbytedata_8h.html#ac99762f700c10c91df6912ad0c40e359">ezmqCreateByteData</a>(ezmqByteDataHandle_t *dataHandle, uint8_t * data,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordtype">size_t</span> dataLength);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<a class="code" href="cezmqapi_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="code" href="cezmqerrorcodes_8h.html#ab0dd8ccb1e19fd43169b46054b79a243">CEZMQStatusCode</a> <a class="code" href="cezmqapi_8h.html#a816019b54813cd10bb7f98a6df110dec">ezmqGetStatus</a>();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<a class="code" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="code" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> <a class="code" href="cezmqbytedata_8h.html#a841bc4fee0a6291a811307a9f7bdc77e">ezmqGetByteData</a>(ezmqByteDataHandle_t dataHandle, uint8_t ** data);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#endif //__EZMQ_H_INCLUDED__</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<a class="code" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="code" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> <a class="code" href="cezmqbytedata_8h.html#a79961144dfc3d60912840c2eaa3b8fdc">ezmqGetDataLength</a>(ezmqByteDataHandle_t dataHandle, <span class="keywordtype">size_t</span> *dataLength);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<a class="code" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="code" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> <a class="code" href="cezmqbytedata_8h.html#a0817a4058deb0fdb38a9d06a2f5f5120">ezmqDestroyByteData</a>(ezmqByteDataHandle_t *dataHandle);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#endif //__EZMQ_BYTEDATA_H_INCLUDED__</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
 <div class="ttc" id="cezmqerrorcodes_8h_html"><div class="ttname"><a href="cezmqerrorcodes_8h.html">cezmqerrorcodes.h</a></div><div class="ttdoc">This file contains error codes of CEZMQ service possibly return to application. </div></div>
-<div class="ttc" id="cezmqapi_8h_html_a61f69b13dee677a4bc5240c5b5958afd"><div class="ttname"><a href="cezmqapi_8h.html#a61f69b13dee677a4bc5240c5b5958afd">ezmqInitialize</a></div><div class="ttdeci">EZMQ_EXPORT CEZMQErrorCode ezmqInitialize()</div><div class="ttdoc">Initialize required EZMQ components. </div></div>
-<div class="ttc" id="cezmqerrorcodes_8h_html_ab0dd8ccb1e19fd43169b46054b79a243"><div class="ttname"><a href="cezmqerrorcodes_8h.html#ab0dd8ccb1e19fd43169b46054b79a243">CEZMQStatusCode</a></div><div class="ttdeci">CEZMQStatusCode</div><div class="ttdoc">ezmq Service status codes. </div><div class="ttdef"><b>Definition:</b> cezmqerrorcodes.h:49</div></div>
-<div class="ttc" id="cezmqapi_8h_html_afac7bfbd16be200b618f99cd0dc4e3a6"><div class="ttname"><a href="cezmqapi_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a></div><div class="ttdeci">#define EZMQ_EXPORT</div><div class="ttdef"><b>Definition:</b> cezmqapi.h:29</div></div>
+<div class="ttc" id="cezmqbytedata_8h_html_a841bc4fee0a6291a811307a9f7bdc77e"><div class="ttname"><a href="cezmqbytedata_8h.html#a841bc4fee0a6291a811307a9f7bdc77e">ezmqGetByteData</a></div><div class="ttdeci">EZMQ_EXPORT CEZMQErrorCode ezmqGetByteData(ezmqByteDataHandle_t dataHandle, uint8_t **data)</div><div class="ttdoc">Get data field of given byte data handle. </div></div>
+<div class="ttc" id="cezmqbytedata_8h_html_ac99762f700c10c91df6912ad0c40e359"><div class="ttname"><a href="cezmqbytedata_8h.html#ac99762f700c10c91df6912ad0c40e359">ezmqCreateByteData</a></div><div class="ttdeci">EZMQ_EXPORT CEZMQErrorCode ezmqCreateByteData(ezmqByteDataHandle_t *dataHandle, uint8_t *data, size_t dataLength)</div><div class="ttdoc">Create ezmq byte data. </div></div>
+<div class="ttc" id="cezmqbytedata_8h_html_a79961144dfc3d60912840c2eaa3b8fdc"><div class="ttname"><a href="cezmqbytedata_8h.html#a79961144dfc3d60912840c2eaa3b8fdc">ezmqGetDataLength</a></div><div class="ttdeci">EZMQ_EXPORT CEZMQErrorCode ezmqGetDataLength(ezmqByteDataHandle_t dataHandle, size_t *dataLength)</div><div class="ttdoc">Get byte data length for the given byte data handle. </div></div>
+<div class="ttc" id="cezmqbytedata_8h_html_a0817a4058deb0fdb38a9d06a2f5f5120"><div class="ttname"><a href="cezmqbytedata_8h.html#a0817a4058deb0fdb38a9d06a2f5f5120">ezmqDestroyByteData</a></div><div class="ttdeci">EZMQ_EXPORT CEZMQErrorCode ezmqDestroyByteData(ezmqByteDataHandle_t *dataHandle)</div><div class="ttdoc">Destroy ezmq byte data. </div></div>
 <div class="ttc" id="cezmqerrorcodes_8h_html_a209941992030cc9fa1fe29b482049acf"><div class="ttname"><a href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a></div><div class="ttdeci">CEZMQErrorCode</div><div class="ttdoc">ezmq service error codes. </div><div class="ttdef"><b>Definition:</b> cezmqerrorcodes.h:37</div></div>
-<div class="ttc" id="cezmqapi_8h_html_a816019b54813cd10bb7f98a6df110dec"><div class="ttname"><a href="cezmqapi_8h.html#a816019b54813cd10bb7f98a6df110dec">ezmqGetStatus</a></div><div class="ttdeci">EZMQ_EXPORT CEZMQStatusCode ezmqGetStatus()</div><div class="ttdoc">Return status of EZMQ service. </div></div>
-<div class="ttc" id="cezmqapi_8h_html_a06249abda210666ec1eb5e6fdcaf82aa"><div class="ttname"><a href="cezmqapi_8h.html#a06249abda210666ec1eb5e6fdcaf82aa">ezmqTerminate</a></div><div class="ttdeci">EZMQ_EXPORT CEZMQErrorCode ezmqTerminate()</div><div class="ttdoc">Perform cleanup of EZMQ components. </div></div>
+<div class="ttc" id="cezmqbytedata_8h_html_afac7bfbd16be200b618f99cd0dc4e3a6"><div class="ttname"><a href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a></div><div class="ttdeci">#define EZMQ_EXPORT</div><div class="ttdef"><b>Definition:</b> cezmqbytedata.h:29</div></div>
+<div class="ttc" id="cezmqbytedata_8h_html_a459ef980e0b3f0094fd2712b15f89de0"><div class="ttname"><a href="cezmqbytedata_8h.html#a459ef980e0b3f0094fd2712b15f89de0">ezmqByteDataHandle_t</a></div><div class="ttdeci">void * ezmqByteDataHandle_t</div><div class="ttdoc">Byte data handle. </div><div class="ttdef"><b>Definition:</b> cezmqbytedata.h:39</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

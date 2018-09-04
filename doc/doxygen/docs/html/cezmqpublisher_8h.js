@@ -11,6 +11,7 @@ var cezmqpublisher_8h =
     [ "ezmqPublish", "cezmqpublisher_8h.html#a2b8b5f271d4c0bd12bed13c20a10031e", null ],
     [ "ezmqPublishOnTopic", "cezmqpublisher_8h.html#a8c1a8152b7567303940c3500e3d764c9", null ],
     [ "ezmqPublishOnTopicList", "cezmqpublisher_8h.html#ab80e93e969b72f157d198f9a720a786e", null ],
+    [ "ezmqSetServerPrivateKey", "cezmqpublisher_8h.html#af27610737cb95cd14649c5cec41c7d5a", null ],
     [ "ezmqStartPublisher", "cezmqpublisher_8h.html#a708e6c35e9ec70a64208b65013541ee3", null ],
     [ "ezmqStopPublisher", "cezmqpublisher_8h.html#a4ec957dcffc9c9362c37e0bdc712d929", null ]
 ];
