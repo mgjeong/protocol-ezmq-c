@@ -105,8 +105,12 @@ void printError()
     printf("\nRe-run the application as shown in below examples: \n");
     printf("\n  (1) For publishing without topic: \n");
     printf("      ./cpublisher -port 5562\n");
-    printf("\n  (2) For publishing with topic:\n");
+    printf("\n  (2) For publishing without topic [Secured]: \n");
+    printf("      ./cpublisher -port 5562 -secured 1\n");
+    printf("\n  (3) For publishing with topic:\n");
     printf("      ./cpublisher -port 5562 -t topic1\n");
+    printf("\n  (4) For publishing with topic [Secured]:\n");
+    printf("      ./cpublisher -port 5562 -t topic1 -secured 1\n");
 }
 
 void sigint(int signal)
@@ -124,9 +128,10 @@ int main(int argc, char* argv[])
     int port = 5562;
     CEZMQErrorCode result;
     char *topic= NULL;
+    int secured = 0;
 
     // get ip, port and topic from command line arguments
-    if(argc != 3 && argc != 5)
+    if(argc != 3 && argc != 5 && argc != 7)
     {
         printError();
         return -1;
@@ -146,6 +151,12 @@ int main(int argc, char* argv[])
             printf("\nGiven Topic is : %s", topic);
             n = n + 2;
         }
+        else if (0 == strcmp(argv[n],"-secured"))
+        {
+            secured = atoi(argv[n + 1]);
+            printf("\nIs Securedi: %d\n", secured);
+            n = n + 2;
+        }
         else
         {
             printError();
@@ -158,7 +169,7 @@ int main(int argc, char* argv[])
 
     //initialize ezmq service
     result = ezmqInitialize();
-    printf("\nInitialize API [result]: %d", result);
+    printf("\nInitialize API [result]: %d\n", result);
     if(result != CEZMQ_OK)
     {
         return -1;
@@ -166,15 +177,27 @@ int main(int argc, char* argv[])
 
     //Create EZMQ Publisher
     result = ezmqCreatePublisher(port, startCB, stopCB, errorCB, &gPublisher);
-    printf("\nCreate Publisher [result]: %d", result);
+    printf("\nCreate Publisher [result]: %d\n", result);
     if(result != CEZMQ_OK)
     {
         return -1;
     }
 
+    // set the server key
+    if(1 == secured)
+    {
+        const char *serverSecretKey = "[:X%Q3UfY+kv2A^.wv:(qy2E=bk0L][cm=mS3Hcx";
+        result = ezmqSetServerPrivateKey(gPublisher, serverSecretKey);
+        if(result != CEZMQ_OK)
+        {
+            printf("\nezmqSetServerPrivateKey failed: %d\n", result);
+            return -1;
+        }
+    }
+
     //Start EZMQ Publisher
     result= ezmqStartPublisher(gPublisher);
-    printf("\nPublisher start [result]: %d", result);
+    printf("\nPublisher start [result]: %d\n", result);
     if(result != CEZMQ_OK)
     {
         return -1;

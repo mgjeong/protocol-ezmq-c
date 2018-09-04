@@ -137,11 +137,13 @@ void printError()
 {
     printf("\nRe-run the application as shown in below examples: \n");
     printf("\n  (1) For subscribing without topic: \n");
-    printf("      ./csubscriber -ip 107.108.81.116 -port 5562 \n");
-    printf("      ./csubscriber -ip localhost -port 5562 \n");
-    printf("\n  (2) For subscribing with topic:  \n");
-    printf("      ./csubscriber -ip 107.108.81.116 -port 5562 -t topic1 \n");
-    printf("      ./csubscriber -ip localhost -port 5562 -t topic1 \n");
+    printf("      ./csubscriber -ip 192.168.1.1 -port 5562 \n");
+    printf("\n  (2) For subscribing without topic [Secured]: \n");
+    printf("      ./csubscriber -ip 192.168.1.1 -port 5562 -secured 1\n");
+    printf("\n  (3) For subscribing with topic:  \n");
+    printf("      ./csubscriber -ip 192.168.1.1 -port 5562 -t topic1 \n");
+    printf("\n  (4) For subscribing with topic [Secured]:  \n");
+    printf("      ./csubscriber -ip 192.168.1.1 -port 5562 -t topic1 -secured 1\n");
 }
 
 void sigint(int signal)
@@ -165,6 +167,7 @@ int main(int argc, char* argv[])
     char *ip = NULL;
     int port = 5562;
     char *topic= NULL;
+    int secured = 0;
     CEZMQErrorCode result;
     g_isStarted = 0;
 
@@ -174,7 +177,7 @@ int main(int argc, char* argv[])
     pthread_cond_init(&g_cv, &g_cattr);
 
     // get ip, port and topic from command line arguments
-    if(argc != 5 && argc != 7)
+    if(argc != 5 && argc != 7 && argc != 9)
     {
         printError();
         return -1;
@@ -198,6 +201,12 @@ int main(int argc, char* argv[])
         {
             topic = argv[n + 1];
             printf("\nGiven Topic is : %s", topic);
+            n = n + 2;
+        }
+        else if (0 == strcmp(argv[n],"-secured"))
+        {
+            secured = atoi(argv[n + 1]);
+            printf("\nIs Securedi: %d\n", secured);
             n = n + 2;
         }
         else
@@ -224,6 +233,25 @@ int main(int argc, char* argv[])
     {
         printf("\nSubscriber creation failed [result] : %d\n", result);
         return -1;
+    }
+
+    if(1 == secured)
+    {
+        const char *serverPublicKey = "tXJx&1^QE2g7WCXbF.$$TVP.wCtxwNhR8?iLi&S<";
+        result = ezmqSetServerPublicKey(subscriber, serverPublicKey);
+        if(result != CEZMQ_OK)
+        {
+            printf("\nezmqSetServerPrivateKey failed: %d\n", result);
+            return -1;
+        }
+        const char *clientSecretKey = "ZB1@RS6Kv^zucova$kH(!o>tZCQ.<!Q)6-0aWFmW";
+        const char *clientPublicKey = "-QW?Ved(f:<::3d5tJ$[4Er&]6#9yr=vha/caBc(";
+        result = ezmqSetClientKeys(subscriber, clientSecretKey, clientPublicKey);
+        if(result != CEZMQ_OK)
+        {
+            printf("\nezmqSetClientKeys failed: %d\n", result);
+            return -1;
+        }
     }
 
     //Start EZMQ Subscriber
