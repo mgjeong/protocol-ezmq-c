@@ -47,15 +47,6 @@ TEST_F(CEZMQByteDataTest, constructByteData)
     ASSERT_EQ(CEZMQ_OK, result);
 }
 
-TEST_F(CEZMQByteDataTest, DISABLED_constructNullByteData)
-{
-    char byteArray[] = { 0x40, 0x05, 0x10, 0x11, 0x12 };
-    CEZMQErrorCode result = ezmqCreateByteData(&mByteDataHandle, NULL, 0);
-    ASSERT_EQ(CEZMQ_ERROR, result);
-    result = ezmqCreateByteData(NULL, (uint8_t *) byteArray, sizeof(byteArray));
-    ASSERT_EQ(CEZMQ_ERROR, result);
-}
-
 TEST_F(CEZMQByteDataTest, getEzmqByteData)
 {
     mByteDataHandle = getezmqByteData();

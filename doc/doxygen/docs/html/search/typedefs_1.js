@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['ezmqbytedatahandle_5ft',['ezmqByteDataHandle_t',['../cezmqbytedata_8h.html#a459ef980e0b3f0094fd2712b15f89de0',1,'cezmqbytedata.h']]],
   ['ezmqerrorcb',['ezmqErrorCB',['../cezmqpublisher_8h.html#aa4ffbafc67c074d4e7161370b3cbd71e',1,'cezmqpublisher.h']]],
   ['ezmqeventhandle_5ft',['ezmqEventHandle_t',['../cezmqevent_8h.html#a6d0a4065016787213d72a4c7474defac',1,'cezmqevent.h']]],
   ['ezmqmsghandle_5ft',['ezmqMsgHandle_t',['../cezmqerrorcodes_8h.html#a5259b1c3cd0bc04e148491878631749e',1,'cezmqerrorcodes.h']]],

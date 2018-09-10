@@ -28,9 +28,12 @@ DEP_ROOT=$(pwd)/dependencies
 EZMQ_TARGET_ARCH="$(uname -m)"
 EZMQ_WITH_DEP=false
 EZMQ_BUILD_MODE="release"
+EZMQ_WITH_SECURITY=true
+
+RELEASE="1"
+LOGGING=false
 
 install_dependencies() {
-
     if [ -d "./dependencies" ] ; then
         echo "dependencies folder exist"
     else
@@ -38,142 +41,41 @@ install_dependencies() {
     fi
 
     cd ./dependencies
-    #clone ezmq-protocol-cpp
-    git clone git@github.sec.samsung.net:RS7-EdgeComputing/protocol-ezmq-cpp.git
-    cd ./protocol-ezmq-cpp
-
-    # Build ezmq-protocol-cpp for given architecture [x86/x86_64/arm/arm64/armhf]
-    echo -e "${GREEN}Installing ezmq library and its dependencies${NO_COLOUR}"
-    if [ "x86" = ${EZMQ_TARGET_ARCH} ]; then
-        if [ "debug" = ${EZMQ_BUILD_MODE} ]; then
-            ./build_auto.sh --with_dependencies=true --target_arch=x86 --build_mode=debug
-        else
-            ./build_auto.sh --with_dependencies=true --target_arch=x86
-        fi
-    elif [ "x86_64" = ${EZMQ_TARGET_ARCH} ]; then
-	    if [ "debug" = ${EZMQ_BUILD_MODE} ]; then
-            ./build_auto.sh --with_dependencies=true --target_arch=x86_64 --build_mode=debug
-        else
-            ./build_auto.sh --with_dependencies=true --target_arch=x86_64
-        fi
-    elif [ "arm" = ${EZMQ_TARGET_ARCH} ]; then
-        if [ "debug" = ${EZMQ_BUILD_MODE} ]; then
-            ./build_auto.sh --with_dependencies=true --target_arch=arm --build_mode=debug
-        else
-            ./build_auto.sh --with_dependencies=true --target_arch=arm
-        fi
-    elif [ "arm64" = ${EZMQ_TARGET_ARCH} ]; then
-        if [ "debug" = ${EZMQ_BUILD_MODE} ]; then
-            ./build_auto.sh --with_dependencies=true --target_arch=arm64 --build_mode=debug
-        else
-            ./build_auto.sh --with_dependencies=true --target_arch=arm64
-        fi
-    elif [ "armhf" = ${EZMQ_TARGET_ARCH} -o "armhf-qemu" = ${EZMQ_TARGET_ARCH} ]; then
-	    if [ "debug" = ${EZMQ_BUILD_MODE} ]; then
-            ./build_auto.sh --with_dependencies=true --target_arch=armhf --build_mode=debug
-        else
-            ./build_auto.sh --with_dependencies=true --target_arch=armhf
-        fi
-    elif [ "armhf-native" = ${EZMQ_TARGET_ARCH} ]; then
-        if [ "debug" = ${EZMQ_BUILD_MODE} ]; then
-            ./build_auto.sh --with_dependencies=true --target_arch=armhf-native --build_mode=debug
-        else
-            ./build_auto.sh --with_dependencies=true --target_arch=armhf-native
-        fi
+    if [ -d "./protocol-ezmq-cpp" ] ; then
+        echo "protocol-ezmq-cpp library folder exist"
+    else
+        git clone git@github.sec.samsung.net:RS7-EdgeComputing/protocol-ezmq-cpp.git
     fi
+    
+    # Build ezmq-protocol-cpp for given architecture [x86/x86_64/arm/arm64/armhf]
+    cd ./protocol-ezmq-cpp
+    echo -e "${GREEN}Installing ezmq library and its dependencies${NO_COLOUR}"
+    ./build_auto.sh --with_dependencies=${EZMQ_WITH_DEP} --target_arch=${EZMQ_TARGET_ARCH} --build_mode=${EZMQ_BUILD_MODE} --with_security=${EZMQ_WITH_SECURITY}
     echo -e "${GREEN}Installation of ezmq library and its dependencies done${NO_COLOUR}"
 }
 
-build_x86() {
-    echo -e "Building for x86"
-    if [ ${EZMQ_WITH_DEP} = true ]; then
-        install_dependencies
-    fi
-    cd $PROJECT_ROOT
-    if [ "debug" = ${EZMQ_BUILD_MODE} ]; then
-        scons TARGET_OS=linux TARGET_ARCH=x86 RELEASE=0 LOGGING=true
+build_native() {
+    if [ "armhf-native" = ${EZMQ_TARGET_ARCH} ]; then
+        scons TARGET_OS=linux TARGET_ARCH=armhf RELEASE=${RELEASE} LOGGING=${LOGGING}         
     else
-        scons TARGET_OS=linux TARGET_ARCH=x86
-    fi
-}
-
-build_x86_64() {
-    echo -e "Building for x86_64"
-    if [ ${EZMQ_WITH_DEP} = true ]; then
-        install_dependencies
-    fi
-    cd $PROJECT_ROOT
-    if [ "debug" = ${EZMQ_BUILD_MODE} ]; then
-        scons TARGET_OS=linux TARGET_ARCH=x86_64 RELEASE=0 LOGGING=true
-    else
-        scons TARGET_OS=linux TARGET_ARCH=x86_64
+        scons TARGET_OS=linux TARGET_ARCH=${EZMQ_TARGET_ARCH} RELEASE=${RELEASE} LOGGING=${LOGGING}   
     fi
 }
 
 build_arm() {
-    echo -e "Building for arm"
-    if [ ${EZMQ_WITH_DEP} = true ]; then
-        install_dependencies
-    fi
-    cd $PROJECT_ROOT
-    if [ "debug" = ${EZMQ_BUILD_MODE} ]; then
-        scons TARGET_ARCH=arm TC_PREFIX=/usr/bin/arm-linux-gnueabi- TC_PATH=/usr/bin/ RELEASE=0 LOGGING=true
-    else
-        scons TARGET_ARCH=arm TC_PREFIX=/usr/bin/arm-linux-gnueabi- TC_PATH=/usr/bin/
-    fi
+    scons TARGET_ARCH=arm TC_PREFIX=/usr/bin/arm-linux-gnueabi- TC_PATH=/usr/bin/ RELEASE=${RELEASE} LOGGING=${LOGGING}
 }
 
 build_arm64() {
-    echo -e "Building for arm64"
-    if [ ${EZMQ_WITH_DEP} = true ]; then
-        install_dependencies
-    fi
-    cd $PROJECT_ROOT
-    if [ "debug" = ${EZMQ_BUILD_MODE} ]; then
-        scons TARGET_ARCH=arm64 TC_PREFIX=/usr/bin/aarch64-linux-gnu- TC_PATH=/usr/bin/ RELEASE=0 LOGGING=true
-    else
-        scons TARGET_ARCH=arm64 TC_PREFIX=/usr/bin/aarch64-linux-gnu- TC_PATH=/usr/bin/
-    fi
+    scons TARGET_ARCH=arm64 TC_PREFIX=/usr/bin/aarch64-linux-gnu- TC_PATH=/usr/bin/ RELEASE=${RELEASE} LOGGING=${LOGGING}
 }
 
 build_armhf() {
-    echo -e "Building for armhf"
-    if [ ${EZMQ_WITH_DEP} = true ]; then
-        install_dependencies
-    fi
-    cd $PROJECT_ROOT
-    if [ "debug" = ${EZMQ_BUILD_MODE} ]; then
-        scons TARGET_ARCH=armhf TC_PREFIX=/usr/bin/arm-linux-gnueabihf- TC_PATH=/usr/bin/ RELEASE=0 LOGGING=true
-    else
-        scons TARGET_ARCH=armhf TC_PREFIX=/usr/bin/arm-linux-gnueabihf- TC_PATH=/usr/bin/
-    fi
-}
-
-build_armhf_native() {
-    echo -e "Building for armhf_native"
-    if [ ${EZMQ_WITH_DEP} = true ]; then
-        install_dependencies
-    fi
-    cd $PROJECT_ROOT
-    if [ "debug" = ${EZMQ_BUILD_MODE} ]; then
-        scons TARGET_ARCH=armhf RELEASE=0 LOGGING=true
-    else
-        scons TARGET_ARCH=armhf
-    fi
+   scons TARGET_ARCH=armhf TC_PREFIX=/usr/bin/arm-linux-gnueabihf- TC_PATH=/usr/bin/ RELEASE=${RELEASE} LOGGING=${LOGGING}
 }
 
 build_armhf_qemu() {
-    echo -e "Building for armhf-qemu"
-    if [ ${EZMQ_WITH_DEP} = true ]; then
-        install_dependencies
-    fi
-    cd $PROJECT_ROOT
-    if [ "debug" = ${EZMQ_BUILD_MODE} ]; then
-        scons TARGET_ARCH=armhf RELEASE=0 LOGGING=true
-    else
-        scons TARGET_ARCH=armhf
-    fi
-
+    scons TARGET_ARCH=armhf RELEASE=${RELEASE} LOGGING=${LOGGING}
     if [ -x "/usr/bin/qemu-arm-static" ]; then
         echo -e "${BLUE}qemu-arm-static found, copying it to current directory${NO_COLOUR}"
         cp /usr/bin/qemu-arm-static .
@@ -198,39 +100,46 @@ usage() {
     echo -e "${BLUE}Usage:${NO_COLOUR} ./build_auto.sh <option>"
     echo -e "${GREEN}Options:${NO_COLOUR}"
     echo "  --target_arch=[x86|x86_64|arm|arm64|armhf|armhf-qemu|armhf-native] :  Choose Target Architecture"
-    echo "  --with_dependencies=(default: false)                               :  Build cezmq with its dependency ezmq"
+    echo "  --with_dependencies=[true|false](default: false)                   :  Build cezmq with its dependency ezmq"
     echo "  --build_mode=[release|debug](default: release)                     :  Build ezmq library and samples in release or debug mode"
+    echo "  --with_security=[true|false](default: true)                        :  Build ezmq library with or without Security feature"
     echo "  -c                                                                 :  Clean ezmq Repository and its dependencies"
     echo "  -h / --help                                                        :  Display help and exit"
-    echo -e "${GREEN}Examples: ${NO_COLOUR}"
-    echo -e "${BLUE}  build:-${NO_COLOUR}"
-    echo "  $ ./build_auto.sh --target_arch=x86_64"
-    echo "  $ ./build_auto.sh --with_dependencies=true --target_arch=x86_64 "
-    echo -e "${BLUE}  debug mode build:-${NO_COLOUR}"
-    echo "  $ ./build_auto.sh --target_arch=x86_64 --build_mode=debug"
-    echo -e "${BLUE}  clean:-${NO_COLOUR}"
-    echo "  $ ./build_auto.sh -c"
-    echo -e "${BLUE}  help:-${NO_COLOUR}"
-    echo "  $ ./build_auto.sh -h"
     echo -e "${GREEN}Notes: ${NO_COLOUR}"
     echo "  - While building newly for any architecture use -with_dependencies=true option."
+    echo "  - Before running script, Make sure libsodium is installed, it can be installed using:"
+    echo "    $ sudo apt-get install libsodium-dev"
 }
 
 build() {
+    echo -e "${GREEN}Target Arch is: $EZMQ_TARGET_ARCH${NO_COLOUR}"
+    echo -e "${GREEN}Build mode is: $EZMQ_BUILD_MODE${NO_COLOUR}"
+    echo -e "${GREEN}Build with depedencies: ${EZMQ_WITH_DEP}${NO_COLOUR}"
+    echo -e "${GREEN}Is security enabled: $EZMQ_WITH_SECURITY${NO_COLOUR}"
+    if [ ${EZMQ_WITH_DEP} = true ]; then
+        install_dependencies
+    fi
+    
+    if [ "debug" = ${EZMQ_BUILD_MODE} ]; then
+        RELEASE="0"
+        LOGGING=true
+    fi
+    
+    cd $PROJECT_ROOT
     if [ "x86" = ${EZMQ_TARGET_ARCH} ]; then
-         build_x86; exit 0;
+         build_native;
     elif [ "x86_64" = ${EZMQ_TARGET_ARCH} ]; then
-         build_x86_64; exit 0;
-    elif [ "arm" = ${EZMQ_TARGET_ARCH} ]; then
-         build_arm; exit 0;
-    elif [ "arm64" = ${EZMQ_TARGET_ARCH} ]; then
-         build_arm64; exit 0;
-    elif [ "armhf" = ${EZMQ_TARGET_ARCH} ]; then
-         build_armhf; exit 0;
-    elif [ "armhf-qemu" = ${EZMQ_TARGET_ARCH} ]; then
-         build_armhf_qemu; exit 0;
+         build_native;
     elif [ "armhf-native" = ${EZMQ_TARGET_ARCH} ]; then
-         build_armhf_native; exit 0;
+         build_native;
+    elif [ "arm" = ${EZMQ_TARGET_ARCH} ]; then
+         build_arm;
+    elif [ "arm64" = ${EZMQ_TARGET_ARCH} ]; then
+         build_arm64;
+    elif [ "armhf" = ${EZMQ_TARGET_ARCH} ]; then
+         build_armhf;
+    elif [ "armhf-qemu" = ${EZMQ_TARGET_ARCH} ]; then
+         build_armhf_qemu; 
     else
          echo -e "${RED}Not a supported architecture${NO_COLOUR}"
          usage; exit 1;
@@ -247,26 +156,28 @@ process_cmd_args() {
         case "$1" in
             --with_dependencies=*)
                 EZMQ_WITH_DEP="${1#*=}";
-                if [ ${EZMQ_WITH_DEP} = true ]; then
-                    echo -e "${BLUE}Build with depedencies${NO_COLOUR}"
-                elif [ ${EZMQ_WITH_DEP} = false ]; then
-                    echo -e "${BLUE}Build without depedencies${NO_COLOUR}"
-                else
-                    echo -e "${BLUE}Build without depedencies${NO_COLOUR}"
+                if [ ${EZMQ_WITH_DEP} != true ] && [ ${EZMQ_WITH_DEP} != false ]; then
+                    echo -e "${RED}Unknown option for --with_dependencies${NO_COLOUR}"
                     shift 1; exit 0
                 fi
                 shift 1;
                 ;;
             --target_arch=*)
                 EZMQ_TARGET_ARCH="${1#*=}";
-                echo -e "${GREEN}Target Arch is: $EZMQ_TARGET_ARCH${NO_COLOUR}"
                 shift 1
                 ;;
             --build_mode=*)
                 EZMQ_BUILD_MODE="${1#*=}";
-                echo -e "${GREEN}Build mode is: $EZMQ_BUILD_MODE${NO_COLOUR}"
                 shift 1;
                 ;;
+            --with_security=*)
+                EZMQ_WITH_SECURITY="${1#*=}";
+                if [ ${EZMQ_WITH_SECURITY} != true ] && [ ${EZMQ_WITH_SECURITY} != false ]; then
+                    echo -e "${RED}Unknown option for --with_security${NO_COLOUR}"
+                    shift 1; exit 0
+                fi              
+                shift 1;
+                ;; 
             -c)
                 clean_ezmq
                 shift 1; exit 0
@@ -294,5 +205,8 @@ process_cmd_args() {
 }
 
 process_cmd_args "$@"
+echo -e "Building C ezMQ library("${EZMQ_TARGET_ARCH}").."
 build
+echo -e "Done building C ezMQ library("${EZMQ_TARGET_ARCH}")"
 
+exit 0

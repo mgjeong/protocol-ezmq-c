@@ -132,40 +132,49 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a5cf05a8790e1017eeec3e69f9c5cc9d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a5cf05a8790e1017eeec3e69f9c5cc9d0">ezmqCreateSubscriber</a> (const char *ip, int port, <a class="el" href="cezmqsubscriber_8h.html#a474ebe30402535a5298f3be4df13bf94">csubCB</a> subcb, <a class="el" href="cezmqsubscriber_8h.html#a142edde8e787966ea1accd20eefec54d">csubTopicCB</a> topiccb, <a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> *subHandle)</td></tr>
+<tr class="memitem:a5cf05a8790e1017eeec3e69f9c5cc9d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a5cf05a8790e1017eeec3e69f9c5cc9d0">ezmqCreateSubscriber</a> (const char *ip, int port, <a class="el" href="cezmqsubscriber_8h.html#a474ebe30402535a5298f3be4df13bf94">csubCB</a> subcb, <a class="el" href="cezmqsubscriber_8h.html#a142edde8e787966ea1accd20eefec54d">csubTopicCB</a> topiccb, <a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> *subHandle)</td></tr>
 <tr class="memdesc:a5cf05a8790e1017eeec3e69f9c5cc9d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create ezmq Subscriber with given ip, port and callbacks.  <a href="#a5cf05a8790e1017eeec3e69f9c5cc9d0">More...</a><br /></td></tr>
 <tr class="separator:a5cf05a8790e1017eeec3e69f9c5cc9d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a972f268ab35ddc6f142e30f1899a9021"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a972f268ab35ddc6f142e30f1899a9021">emzqStartSubscriber</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle)</td></tr>
+<tr class="memitem:a2184edb7275ea07d5fd15c1408ea1ae6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a2184edb7275ea07d5fd15c1408ea1ae6">ezmqSetClientKeys</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle, const char *clientPrivateKey, const char *clientPublicKey)</td></tr>
+<tr class="memdesc:a2184edb7275ea07d5fd15c1408ea1ae6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the security keys of client/its own.  <a href="#a2184edb7275ea07d5fd15c1408ea1ae6">More...</a><br /></td></tr>
+<tr class="separator:a2184edb7275ea07d5fd15c1408ea1ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e1be1db0f86a8963f83f111af7a8c9d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a5e1be1db0f86a8963f83f111af7a8c9d">ezmqSetServerPublicKey</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle, const char *key)</td></tr>
+<tr class="memdesc:a5e1be1db0f86a8963f83f111af7a8c9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the server public key.  <a href="#a5e1be1db0f86a8963f83f111af7a8c9d">More...</a><br /></td></tr>
+<tr class="separator:a5e1be1db0f86a8963f83f111af7a8c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a972f268ab35ddc6f142e30f1899a9021"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a972f268ab35ddc6f142e30f1899a9021">emzqStartSubscriber</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle)</td></tr>
 <tr class="memdesc:a972f268ab35ddc6f142e30f1899a9021"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts Sub instance.  <a href="#a972f268ab35ddc6f142e30f1899a9021">More...</a><br /></td></tr>
 <tr class="separator:a972f268ab35ddc6f142e30f1899a9021"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4fd16050fe55a35b5092a28a90ee78e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#ab4fd16050fe55a35b5092a28a90ee78e">ezmqSubscribe</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle)</td></tr>
+<tr class="memitem:ab4fd16050fe55a35b5092a28a90ee78e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#ab4fd16050fe55a35b5092a28a90ee78e">ezmqSubscribe</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle)</td></tr>
 <tr class="memdesc:ab4fd16050fe55a35b5092a28a90ee78e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribe for event/messages.  <a href="#ab4fd16050fe55a35b5092a28a90ee78e">More...</a><br /></td></tr>
 <tr class="separator:ab4fd16050fe55a35b5092a28a90ee78e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abde2307d05ec4a1fd57266a7c018bd2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#abde2307d05ec4a1fd57266a7c018bd2c">ezmqSubscribeForTopic</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle, const char *topic)</td></tr>
+<tr class="memitem:abde2307d05ec4a1fd57266a7c018bd2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#abde2307d05ec4a1fd57266a7c018bd2c">ezmqSubscribeForTopic</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle, const char *topic)</td></tr>
 <tr class="memdesc:abde2307d05ec4a1fd57266a7c018bd2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribe for event/messages on a particular topic.  <a href="#abde2307d05ec4a1fd57266a7c018bd2c">More...</a><br /></td></tr>
 <tr class="separator:abde2307d05ec4a1fd57266a7c018bd2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2d66d34a2e3ba09006fdb7f4032af6b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#ae2d66d34a2e3ba09006fdb7f4032af6b">ezmqSubscribeForTopicList</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle, const char **topicList, int listSize)</td></tr>
+<tr class="memitem:ae2d66d34a2e3ba09006fdb7f4032af6b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#ae2d66d34a2e3ba09006fdb7f4032af6b">ezmqSubscribeForTopicList</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle, const char **topicList, int listSize)</td></tr>
 <tr class="memdesc:ae2d66d34a2e3ba09006fdb7f4032af6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribe for event/messages on given list of topics.  <a href="#ae2d66d34a2e3ba09006fdb7f4032af6b">More...</a><br /></td></tr>
 <tr class="separator:ae2d66d34a2e3ba09006fdb7f4032af6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab269ee8e4f80d8f741f96d1c8b6dda43"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#ab269ee8e4f80d8f741f96d1c8b6dda43">ezmqUnSubscribe</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle)</td></tr>
+<tr class="memitem:a0b09a431dbd80deb4fdc96324abf85aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a0b09a431dbd80deb4fdc96324abf85aa">ezmqSubscribeWithIpPort</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle, const char *ip, int port, const char *topic)</td></tr>
+<tr class="memdesc:a0b09a431dbd80deb4fdc96324abf85aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribe for event/messages from given IP:Port on the given topic.  <a href="#a0b09a431dbd80deb4fdc96324abf85aa">More...</a><br /></td></tr>
+<tr class="separator:a0b09a431dbd80deb4fdc96324abf85aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab269ee8e4f80d8f741f96d1c8b6dda43"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#ab269ee8e4f80d8f741f96d1c8b6dda43">ezmqUnSubscribe</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle)</td></tr>
 <tr class="memdesc:ab269ee8e4f80d8f741f96d1c8b6dda43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Un-subscribe all the events from publisher.  <a href="#ab269ee8e4f80d8f741f96d1c8b6dda43">More...</a><br /></td></tr>
 <tr class="separator:ab269ee8e4f80d8f741f96d1c8b6dda43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80c05e1539d54a8ff3a2a0af121eafd9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a80c05e1539d54a8ff3a2a0af121eafd9">ezmqUnSubscribeForTopic</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle, const char *topic)</td></tr>
+<tr class="memitem:a80c05e1539d54a8ff3a2a0af121eafd9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a80c05e1539d54a8ff3a2a0af121eafd9">ezmqUnSubscribeForTopic</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle, const char *topic)</td></tr>
 <tr class="memdesc:a80c05e1539d54a8ff3a2a0af121eafd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Un-subscribe specific topic events.  <a href="#a80c05e1539d54a8ff3a2a0af121eafd9">More...</a><br /></td></tr>
 <tr class="separator:a80c05e1539d54a8ff3a2a0af121eafd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17e1daa993bcdfe4b438430fc42511e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a17e1daa993bcdfe4b438430fc42511e5">ezmqUnSubscribeForTopicList</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle, const char **topicList, int listSize)</td></tr>
+<tr class="memitem:a17e1daa993bcdfe4b438430fc42511e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a17e1daa993bcdfe4b438430fc42511e5">ezmqUnSubscribeForTopicList</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle, const char **topicList, int listSize)</td></tr>
 <tr class="memdesc:a17e1daa993bcdfe4b438430fc42511e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Un-subscribe event/messages on given list of topics.  <a href="#a17e1daa993bcdfe4b438430fc42511e5">More...</a><br /></td></tr>
 <tr class="separator:a17e1daa993bcdfe4b438430fc42511e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab87d927761652ce8d10dabea9c3e59b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#aab87d927761652ce8d10dabea9c3e59b">ezmqStopSubscriber</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle)</td></tr>
+<tr class="memitem:aab87d927761652ce8d10dabea9c3e59b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#aab87d927761652ce8d10dabea9c3e59b">ezmqStopSubscriber</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle)</td></tr>
 <tr class="memdesc:aab87d927761652ce8d10dabea9c3e59b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops SUB instance.  <a href="#aab87d927761652ce8d10dabea9c3e59b">More...</a><br /></td></tr>
 <tr class="separator:aab87d927761652ce8d10dabea9c3e59b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a477fffe46214bc144b13976584b4a8f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a477fffe46214bc144b13976584b4a8f7">ezmqGetSubIp</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle, char **ip)</td></tr>
+<tr class="memitem:a477fffe46214bc144b13976584b4a8f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a477fffe46214bc144b13976584b4a8f7">ezmqGetSubIp</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle, char **ip)</td></tr>
 <tr class="memdesc:a477fffe46214bc144b13976584b4a8f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the IP address.  <a href="#a477fffe46214bc144b13976584b4a8f7">More...</a><br /></td></tr>
 <tr class="separator:a477fffe46214bc144b13976584b4a8f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62b83dfafa1543328f3113bf8e6ca9cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a62b83dfafa1543328f3113bf8e6ca9cc">ezmqGetSubPort</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle, int *port)</td></tr>
+<tr class="memitem:a62b83dfafa1543328f3113bf8e6ca9cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a62b83dfafa1543328f3113bf8e6ca9cc">ezmqGetSubPort</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> subHandle, int *port)</td></tr>
 <tr class="memdesc:a62b83dfafa1543328f3113bf8e6ca9cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the port of the subscriber.  <a href="#a62b83dfafa1543328f3113bf8e6ca9cc">More...</a><br /></td></tr>
 <tr class="separator:a62b83dfafa1543328f3113bf8e6ca9cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28d145b6b1303eee266d6433569983fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a28d145b6b1303eee266d6433569983fe">ezmqDestroySubscriber</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> *subHandle)</td></tr>
+<tr class="memitem:a28d145b6b1303eee266d6433569983fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cezmqsubscriber_8h.html#a28d145b6b1303eee266d6433569983fe">ezmqDestroySubscriber</a> (<a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> *subHandle)</td></tr>
 <tr class="memdesc:a28d145b6b1303eee266d6433569983fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy ezmq subscriber.  <a href="#a28d145b6b1303eee266d6433569983fe">More...</a><br /></td></tr>
 <tr class="separator:a28d145b6b1303eee266d6433569983fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -233,7 +242,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> emzqStartSubscriber </td>
+          <td class="memname"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> emzqStartSubscriber </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a>&#160;</td>
           <td class="paramname"><em>subHandle</em></td><td>)</td>
@@ -258,7 +267,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqCreateSubscriber </td>
+          <td class="memname"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqCreateSubscriber </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>ip</em>, </td>
@@ -315,7 +324,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqDestroySubscriber </td>
+          <td class="memname"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqDestroySubscriber </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a> *&#160;</td>
           <td class="paramname"><em>subHandle</em></td><td>)</td>
@@ -341,7 +350,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqGetSubIp </td>
+          <td class="memname"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqGetSubIp </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a>&#160;</td>
           <td class="paramname"><em>subHandle</em>, </td>
@@ -378,7 +387,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqGetSubPort </td>
+          <td class="memname"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqGetSubPort </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a>&#160;</td>
           <td class="paramname"><em>subHandle</em>, </td>
@@ -409,12 +418,98 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a2184edb7275ea07d5fd15c1408ea1ae6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqSetClientKeys </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a>&#160;</td>
+          <td class="paramname"><em>subHandle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>clientPrivateKey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>clientPublicKey</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the security keys of client/its own. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">subHandle</td><td>- Subscriber handle </td></tr>
+    <tr><td class="paramname">clientPrivateKey</td><td>- Client private/secret key. </td></tr>
+    <tr><td class="paramname">clientPublicKey</td><td>- Client public key.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>EZMQErrorCode - EZMQ_OK on success, otherwise appropriate error code.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>(1) Key should be 40-character string encoded in the Z85 encoding format <br />
+ (2) This API should be called before start() API. <br />
+ (3) This API should be called, if and only if ezmq is built in secured mode otherwise it will return CEZMQ_ERROR. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a5e1be1db0f86a8963f83f111af7a8c9d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqSetServerPublicKey </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a>&#160;</td>
+          <td class="paramname"><em>subHandle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the server public key. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">subHandle</td><td>- Subscriber handle </td></tr>
+    <tr><td class="paramname">key</td><td>- Server public key.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>CEZMQErrorCode - CEZMQ_OK on success, otherwise appropriate error code.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>(1) Key should be 40-character string encoded in the Z85 encoding format <br />
+ (2) This API should be called before start() API. (3) If using the following API in secured mode: <br />
+ <a class="el" href="cezmqsubscriber_8h.html#a0b09a431dbd80deb4fdc96324abf85aa" title="Subscribe for event/messages from given IP:Port on the given topic. ">ezmqSubscribeWithIpPort( ezmqSubHandle_t subHandle, const char *ip, int port, const char *topic)</a> then, ezmqSetServerPublicKey API needs to be called before that.<br />
+ (4) This API should be called, if and only if ezmq is built in secured mode otherwise, it will return CEZMQ_ERROR. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="aab87d927761652ce8d10dabea9c3e59b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqStopSubscriber </td>
+          <td class="memname"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqStopSubscriber </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a>&#160;</td>
           <td class="paramname"><em>subHandle</em></td><td>)</td>
@@ -439,7 +534,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqSubscribe </td>
+          <td class="memname"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqSubscribe </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a>&#160;</td>
           <td class="paramname"><em>subHandle</em></td><td>)</td>
@@ -464,7 +559,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqSubscribeForTopic </td>
+          <td class="memname"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqSubscribeForTopic </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a>&#160;</td>
           <td class="paramname"><em>subHandle</em>, </td>
@@ -492,7 +587,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>CEZMQErrorCode - CEZMQ_OK on success, otherwise appropriate error code.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>(1) Topic name should be as path format. For example: home/livingroom/ (2) Topic name can have letters [a-z, A-z], numerics [0-9] and special characters _ - . and / </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>(1) Topic name should be as path format. For example: home/livingroom/ <br />
+ (2) Topic name can have letters [a-z, A-z], numerics [0-9] and special characters _ - . and / </dd></dl>
 
 </div>
 </div>
@@ -501,7 +597,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqSubscribeForTopicList </td>
+          <td class="memname"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqSubscribeForTopicList </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a>&#160;</td>
           <td class="paramname"><em>subHandle</em>, </td>
@@ -537,7 +633,64 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>CEZMQErrorCode - CEZMQ_OK on success, otherwise appropriate error code.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>(1) Topic name should be as path format. For example: home/livingroom/ (2) Topic name can have letters [a-z, A-z], numerics [0-9] and special characters _ - . and / </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>(1) Topic name should be as path format. For example: home/livingroom/ <br />
+ (2) Topic name can have letters [a-z, A-z], numerics [0-9] and special characters _ - . and / </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0b09a431dbd80deb4fdc96324abf85aa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqSubscribeWithIpPort </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a>&#160;</td>
+          <td class="paramname"><em>subHandle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>ip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>topic</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Subscribe for event/messages from given IP:Port on the given topic. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">subHandle</td><td>- Subscriber handle. </td></tr>
+    <tr><td class="paramname">ip</td><td>- Target[Publisher] IP address. </td></tr>
+    <tr><td class="paramname">port</td><td>- Target[Publisher] Port number. </td></tr>
+    <tr><td class="paramname">topic</td><td>- Topic to be subscribed.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>EZMQErrorCode - EZMQ_OK on success, otherwise appropriate error code.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>(1) It will be using same Subscriber socket for connecting to given ip:port. <br />
+ (2) To unsubcribe use un-subscribe API with the same topic. <br />
+ (3) Topic name should be as path format. For example: home/livingroom/ <br />
+ (4) Topic name can have letters [a-z, A-z], numerics [0-9] and special characters _ - . and / <br />
+ (5) Topic will be appended with forward slash [/] in case, if application has not appended it <br />
+ (6) If using in secured mode: Call <a class="el" href="cezmqsubscriber_8h.html#a5e1be1db0f86a8963f83f111af7a8c9d" title="Set the server public key. ">ezmqSetServerPublicKey(ezmqSubHandle_t subHandle, const char *key)</a> API with target server public key before calling this API. </dd></dl>
 
 </div>
 </div>
@@ -546,7 +699,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqUnSubscribe </td>
+          <td class="memname"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqUnSubscribe </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a>&#160;</td>
           <td class="paramname"><em>subHandle</em></td><td>)</td>
@@ -571,7 +724,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqUnSubscribeForTopic </td>
+          <td class="memname"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqUnSubscribeForTopic </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a>&#160;</td>
           <td class="paramname"><em>subHandle</em>, </td>
@@ -599,7 +752,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>CEZMQErrorCode - CEZMQ_OK on success, otherwise appropriate error code.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>(1) Topic name should be as path format. For example: home/livingroom/ (2) Topic name can have letters [a-z, A-z], numerics [0-9] and special characters _ - . and / </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>(1) Topic name should be as path format. For example: home/livingroom/ <br />
+ (2) Topic name can have letters [a-z, A-z], numerics [0-9] and special characters _ - . and / </dd></dl>
 
 </div>
 </div>
@@ -608,7 +762,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="cezmqsubscriber_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqUnSubscribeForTopicList </td>
+          <td class="memname"><a class="el" href="cezmqbytedata_8h.html#afac7bfbd16be200b618f99cd0dc4e3a6">EZMQ_EXPORT</a> <a class="el" href="cezmqerrorcodes_8h.html#a209941992030cc9fa1fe29b482049acf">CEZMQErrorCode</a> ezmqUnSubscribeForTopicList </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="cezmqsubscriber_8h.html#a44924d65fd1fe409a6c8a40b3eed0f91">ezmqSubHandle_t</a>&#160;</td>
           <td class="paramname"><em>subHandle</em>, </td>
@@ -644,7 +798,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>CEZMQErrorCode - CEZMQ_OK on success, otherwise appropriate error code.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>(1) Topic name should be as path format. For example: home/livingroom/ (2) Topic name can have letters [a-z, A-z], numerics [0-9] and special characters _ - . and / </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>(1) Topic name should be as path format. For example: home/livingroom/ <br />
+ (2) Topic name can have letters [a-z, A-z], numerics [0-9] and special characters _ - . and / </dd></dl>
 
 </div>
 </div>
@@ -652,7 +807,7 @@ Functions</h2></td></tr>
 </div><!-- doc-content -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
-        <li class="footer">Generated on Wed Jul 11 2018 15:29:18</li>
+        <li class="footer">Generated on Fri Aug 31 2018 18:46:07</li>
     </ul>
 </div>
 </body>

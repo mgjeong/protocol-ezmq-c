@@ -64,6 +64,42 @@ EZMQ_EXPORT CEZMQErrorCode ezmqCreateSubscriber(const char *ip, int port, csubCB
         csubTopicCB topiccb, ezmqSubHandle_t *subHandle);
 
 /**
+ * Set the security keys of client/its own.
+ *
+ * @param subHandle - Subscriber handle
+ * @param clientPrivateKey - Client private/secret key.
+ * @param clientPublicKey - Client public key.
+ *
+ * @return EZMQErrorCode - EZMQ_OK on success, otherwise appropriate error code.
+ *
+ * @note
+ * (1) Key should be 40-character string encoded in the Z85 encoding format <br>
+ * (2) This API should be called before start() API. <br>
+ * (3) This API should be called, if and only if ezmq is built in secured mode otherwise it will return CEZMQ_ERROR.
+ */
+EZMQ_EXPORT CEZMQErrorCode ezmqSetClientKeys(ezmqSubHandle_t subHandle,
+        const char *clientPrivateKey, const char *clientPublicKey);
+
+/**
+ * Set the server public key.
+ *
+ * @param subHandle - Subscriber handle
+ * @param key - Server public key.
+ *
+ * @return CEZMQErrorCode - CEZMQ_OK on success, otherwise appropriate error code.
+ *
+ * @note
+ * (1) Key should be 40-character string encoded in the Z85 encoding format <br>
+ * (2) This API should be called before start() API.
+ * (3) If using the following API in secured mode: <br>
+ *     ezmqSubscribeWithIpPort( ezmqSubHandle_t subHandle, const char *ip, const int port, const char *topic) then,
+ *     ezmqSetServerPublicKey API needs to be called before that.<br>
+ * (4) This API should be called, if and only if ezmq is built in secured mode otherwise, it will return CEZMQ_ERROR.
+ */
+EZMQ_EXPORT CEZMQErrorCode ezmqSetServerPublicKey(ezmqSubHandle_t subHandle,
+        const char *key);
+
+/**
  * Starts Sub instance.
  *
  * @param subHandle - Subscriber handle.
@@ -89,9 +125,9 @@ EZMQ_EXPORT CEZMQErrorCode  ezmqSubscribe(ezmqSubHandle_t subHandle);
  *
  * @return CEZMQErrorCode - CEZMQ_OK on success, otherwise appropriate error code.
  *
- * @note (1) Topic name should be as path format. For example:
- *       home/livingroom/ (2) Topic name can have letters [a-z, A-z],
- *       numerics [0-9] and special characters _ - . and /
+ * @note
+ * (1) Topic name should be as path format. For example: home/livingroom/  <br>
+ * (2) Topic name can have letters [a-z, A-z], numerics [0-9] and special characters _ - . and /
  */
 EZMQ_EXPORT CEZMQErrorCode ezmqSubscribeForTopic(ezmqSubHandle_t subHandle, const char *topic);
 
@@ -106,50 +142,72 @@ EZMQ_EXPORT CEZMQErrorCode ezmqSubscribeForTopic(ezmqSubHandle_t subHandle, cons
  *
  * @return CEZMQErrorCode - CEZMQ_OK on success, otherwise appropriate error code.
  *
- *  @note (1) Topic name should be as path format. For example:
- *       home/livingroom/ (2) Topic name can have letters [a-z, A-z],
- *       numerics [0-9] and special characters _ - . and /
+ * @note
+ * (1) Topic name should be as path format. For example: home/livingroom/  <br>
+ * (2) Topic name can have letters [a-z, A-z], numerics [0-9] and special characters _ - . and /
  */
 EZMQ_EXPORT CEZMQErrorCode ezmqSubscribeForTopicList(ezmqSubHandle_t subHandle,
         const char ** topicList, int listSize);
 
 /**
-* Un-subscribe all the events from publisher.
-*
-* @param subHandle - Subscriber handle.
-*
-* @return CEZMQErrorCode - CEZMQ_OK on success, otherwise appropriate error code.
-*/
+ * Subscribe for event/messages from given IP:Port on the given topic.
+ *
+ * @param subHandle - Subscriber handle.
+ * @param ip - Target[Publisher] IP address.
+ * @param port - Target[Publisher] Port number.
+ * @param topic - Topic to be subscribed.
+ *
+ * @return EZMQErrorCode - EZMQ_OK on success, otherwise appropriate error code.
+ *
+ * @note
+ * (1) It will be using same Subscriber socket for connecting to given ip:port. <br>
+ * (2) To unsubcribe use un-subscribe API with the same topic. <br>
+ * (3) Topic name should be as path format. For example: home/livingroom/ <br>
+ * (4) Topic name can have letters [a-z, A-z], numerics [0-9] and special characters _ - . and / <br>
+ * (5) Topic will be appended with forward slash [/] in case, if application has not appended it <br>
+ * (6) If using in secured mode: Call ezmqSetServerPublicKey(ezmqSubHandle_t subHandle, const char *key)
+ *      API with target server public key before calling this API.
+ */
+EZMQ_EXPORT CEZMQErrorCode ezmqSubscribeWithIpPort( ezmqSubHandle_t subHandle, const char *ip,
+        const int port, const char *topic);
+
+/**
+ * Un-subscribe all the events from publisher.
+ *
+ * @param subHandle - Subscriber handle.
+ *
+ * @return CEZMQErrorCode - CEZMQ_OK on success, otherwise appropriate error code.
+ */
 EZMQ_EXPORT CEZMQErrorCode ezmqUnSubscribe(ezmqSubHandle_t subHandle);
 
 /**
-* Un-subscribe specific topic events.
-*
-* @param subHandle - Subscriber handle.
-* @param topic - topic to be unsubscribed.
-* @return CEZMQErrorCode - CEZMQ_OK on success, otherwise appropriate error code.
-*
-* @note (1) Topic name should be as path format. For example:
-*       home/livingroom/ (2) Topic name can have letters [a-z, A-z],
-*       numerics [0-9] and special characters _ - . and /
-*/
+ * Un-subscribe specific topic events.
+ *
+ * @param subHandle - Subscriber handle.
+ * @param topic - topic to be unsubscribed.
+ * @return CEZMQErrorCode - CEZMQ_OK on success, otherwise appropriate error code.
+ *
+ * @note
+ * (1) Topic name should be as path format. For example: home/livingroom/  <br>
+ * (2) Topic name can have letters [a-z, A-z], numerics [0-9] and special characters _ - . and /
+ */
 EZMQ_EXPORT CEZMQErrorCode ezmqUnSubscribeForTopic(ezmqSubHandle_t subHandle, const char *topic);
 
 /**
-* Un-subscribe event/messages on given list of topics. On any of the topic
-* in list, if it failed to unsubscribe events it will return
-* CEZMQ_ERROR/CEZMQ_INVALID_TOPIC.
-*
-* @param subHandle - Subscriber handle.
-* @param topicList - List of topics to be subscribed.
-* @param listSize - Size of topicList.
-*
-* @return CEZMQErrorCode - CEZMQ_OK on success, otherwise appropriate error code.
-*
-*  @note (1) Topic name should be as path format. For example:
-*       home/livingroom/ (2) Topic name can have letters [a-z, A-z],
-*       numerics [0-9] and special characters _ - . and /
-*/
+ * Un-subscribe event/messages on given list of topics. On any of the topic
+ * in list, if it failed to unsubscribe events it will return
+ * CEZMQ_ERROR/CEZMQ_INVALID_TOPIC.
+ *
+ * @param subHandle - Subscriber handle.
+ * @param topicList - List of topics to be subscribed.
+ * @param listSize - Size of topicList.
+ *
+ * @return CEZMQErrorCode - CEZMQ_OK on success, otherwise appropriate error code.
+ *
+ *  @note
+ * (1) Topic name should be as path format. For example: home/livingroom/  <br>
+ * (2) Topic name can have letters [a-z, A-z], numerics [0-9] and special characters _ - . and /
+ */
 EZMQ_EXPORT CEZMQErrorCode ezmqUnSubscribeForTopicList(ezmqSubHandle_t subHandle, const char ** topicList,
         int listSize);
 

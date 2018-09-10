@@ -19,6 +19,7 @@
 #include "EZMQPublisher.h"
 #include "Event.pb.h"
 #include "EZMQByteData.h"
+#include "EZMQException.h"
 
 using namespace ezmq;
 
@@ -58,6 +59,23 @@ CEZMQErrorCode ezmqCreatePublisher(int port, ezmqStartCB startCb,
     pubInstance->handle = publisherObj;
     *pubHandle = pubInstance;
     return CEZMQ_OK;
+}
+
+CEZMQErrorCode ezmqSetServerPrivateKey(ezmqPubHandle_t pubHandle, const char *key)
+{
+    VERIFY_NON_NULL(pubHandle)
+    VERIFY_NON_NULL(key)
+    EZMQPublisher *publisherObj = getPubInstance(pubHandle);
+    EZMQErrorCode errorCode = EZMQ_ERROR;
+    try
+    {
+        errorCode = publisherObj->setServerPrivateKey(key);
+    }
+    catch(EZMQException &e)
+    {
+        return CEZMQErrorCode(errorCode);
+    }
+    return CEZMQErrorCode(errorCode);
 }
 
 CEZMQErrorCode ezmqStartPublisher(ezmqPubHandle_t pubHandle)

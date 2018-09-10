@@ -54,12 +54,28 @@ typedef void (*ezmqErrorCB)(CEZMQErrorCode code);
  * @param startCb - Start callback.
  * @param stopCb - Stop Callback.
  * @param errorCb - Error Callback.
-  * @param pubHandle  - Handle to be filled.
+ * @param pubHandle  - Handle to be filled.
  *
  * @return CEZMQErrorCode - CEZMQ_OK on success, otherwise appropriate error code.
  */
 EZMQ_EXPORT CEZMQErrorCode ezmqCreatePublisher(int port, ezmqStartCB startCb,
         ezmqStopCB stopCb, ezmqErrorCB errorCb, ezmqPubHandle_t *pubHandle);
+
+/**
+ * Set the server private/secret key.
+ *
+ * @param pubHandle - Publisher handle
+ * @param key - Server private/Secret key.
+ *
+ * @return CEZMQErrorCode - CEZMQ_OK on success, otherwise appropriate error code.
+ *
+ * @note
+ * (1) Key should be 40-character string encoded in the Z85 encoding format <br>
+ * (2) This API should be called before start() API.<br>
+ * (3) This API should be called, if and only if ezmq is built in secured mode otherwise, it will return CEZMQ_ERROR.
+ */
+EZMQ_EXPORT CEZMQErrorCode ezmqSetServerPrivateKey(ezmqPubHandle_t pubHandle,
+        const char *key);
 
 /**
  * Starts PUB instance.
@@ -89,9 +105,9 @@ EZMQ_EXPORT CEZMQErrorCode ezmqPublish(ezmqPubHandle_t pubHandle, const ezmqMsgH
  *
  * @return CEZMQErrorCode - CEZMQ_OK on success, otherwise appropriate error code.
  *
- * @note (1) Topic name should be as path format. For example:
- *       home/livingroom/ (2) Topic name can have letters [a-z, A-z],
- *       numerics [0-9] and special characters _ - . and /
+ * @note
+ * (1) Topic name should be as path format. For example: home/livingroom/  <br>
+ * (2) Topic name can have letters [a-z, A-z], numerics [0-9] and special characters _ - . and /
  */
 EZMQ_EXPORT CEZMQErrorCode ezmqPublishOnTopic(ezmqPubHandle_t pubHandle, const char *topic,
         const ezmqMsgHandle_t event);
@@ -108,9 +124,9 @@ EZMQ_EXPORT CEZMQErrorCode ezmqPublishOnTopic(ezmqPubHandle_t pubHandle, const c
  *
  * @return CEZMQErrorCode - CEZMQ_OK on success, otherwise appropriate error code.
  *
- *  @note (1) Topic name should be as path format. For example:
- *       home/livingroom/ (2) Topic name can have letters [a-z, A-z],
- *       numerics [0-9] and special characters _ - . and /
+ * @note
+ * (1) Topic name should be as path format. For example: home/livingroom/  <br>
+ * (2) Topic name can have letters [a-z, A-z], numerics [0-9] and special characters _ - . and /
  */
 EZMQ_EXPORT CEZMQErrorCode ezmqPublishOnTopicList(ezmqPubHandle_t pubHandle, const char ** topicList,
         int listSize, const ezmqMsgHandle_t event);

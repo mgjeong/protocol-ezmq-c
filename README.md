@@ -22,6 +22,12 @@ and serialization / deserialization middlewares along with some added functional
 - SCons
   - Version : 2.3.0 or above
   - [How to install](http://scons.org/doc/2.3.0/HTML/scons-user/c95.html)
+  
+- You must install **libsodium**: [It is required for secured mode]
+   ```
+   $ sudo apt-get install libsodium-dev 
+   ```
+
 
 ## How to build ##
 1. Goto: ~/protocol-ezmq-c/
