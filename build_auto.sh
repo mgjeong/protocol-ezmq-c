@@ -51,8 +51,8 @@ install_dependencies() {
     
     # Build ezmq-protocol-cpp for given architecture [x86/x86_64/arm/arm64/armhf]
     cd ./protocol-ezmq-cpp
-	 echo -e "${GREEN}Checkout ezmq release 1.0 version${NO_COLOUR}"
-	 git checkout ${PROTOCOL_EZMQ_CPP_VERSION}
+    echo -e "${GREEN}Checkout ezmq release 1.0 version${NO_COLOUR}"
+    git checkout ${PROTOCOL_EZMQ_CPP_VERSION}
     echo -e "${GREEN}Installing ezmq library and its dependencies${NO_COLOUR}"
     ./build_auto.sh --with_dependencies=${EZMQ_WITH_DEP} --target_arch=${EZMQ_TARGET_ARCH} --build_mode=${EZMQ_BUILD_MODE} --with_security=${EZMQ_WITH_SECURITY}
     echo -e "${GREEN}Installation of ezmq library and its dependencies done${NO_COLOUR}"
