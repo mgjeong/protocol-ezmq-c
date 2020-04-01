@@ -1,6 +1,6 @@
 # ezmq library (c)
 
-protocol-ezmq-c is wrapper library which is written on the top of [protocol-ezmq-cpp](https://github.sec.samsung.net/RS7-EdgeComputing/protocol-ezmq-cpp), that provides a standard messaging interface over various data streaming
+protocol-ezmq-c is wrapper library which is written on the top of [protocol-ezmq-cpp](https://github.com/edgexfoundry-holding/protocol-ezmq-cpp), that provides a standard messaging interface over various data streaming
 and serialization / deserialization middlewares along with some added functionalities.</br>
   - Currently supports streaming using 0mq and serialization / deserialization using protobuf.
   - Publisher -> Multiple Subscribers broadcasting.
