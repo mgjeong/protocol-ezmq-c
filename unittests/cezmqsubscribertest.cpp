@@ -193,9 +193,10 @@ TEST_F(CEZMQSubscriberTest, subscribeWithIpPort)
 
 TEST_F(CEZMQSubscriberTest, subscribeSecured)
 {
-    const char *serverPublicKey = "tXJx&1^QE2g7WCXbF.$$TVP.wCtxwNhR8?iLi&S<";
-    const char *clientSecretKey = "ZB1@RS6Kv^zucova$kH(!o>tZCQ.<!Q)6-0aWFmW";
-    const char *clientPublicKey = "-QW?Ved(f:<::3d5tJ$[4Er&]6#9yr=vha/caBc(";
+    // put server & client key
+    const char *serverPublicKey = "";
+    const char *clientSecretKey = "";
+    const char *clientPublicKey = "";
     ezmqSetServerPublicKey(mSubscriber, serverPublicKey);
     ezmqSetClientKeys(mSubscriber, clientSecretKey, clientPublicKey);
     EXPECT_EQ(CEZMQ_OK, emzqStartSubscriber(mSubscriber));
