@@ -44,7 +44,7 @@ install_dependencies() {
     if [ -d "./protocol-ezmq-cpp" ] ; then
         echo "protocol-ezmq-cpp library folder exist"
     else
-        git clone git@github.sec.samsung.net:RS7-EdgeComputing/protocol-ezmq-cpp.git
+        git clone git@github.com:edgexfoundry-holding/protocol-ezmq-cpp.git
     fi
     
     # Build ezmq-protocol-cpp for given architecture [x86/x86_64/arm/arm64/armhf]
