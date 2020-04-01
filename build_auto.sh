@@ -39,7 +39,7 @@ install_dependencies() {
 
     cd ./dependencies
     #clone ezmq-protocol-cpp
-    git clone git@github.sec.samsung.net:RS7-EdgeComputing/protocol-ezmq-cpp.git
+    git clone git@github.com:edgexfoundry-holding/protocol-ezmq-cpp.git
     cd ./protocol-ezmq-cpp
 
     # Build ezmq-protocol-cpp for given architecture [x86/x86_64/arm/arm64/armhf]

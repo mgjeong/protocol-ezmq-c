@@ -137,10 +137,10 @@ void printError()
 {
     printf("\nRe-run the application as shown in below examples: \n");
     printf("\n  (1) For subscribing without topic: \n");
-    printf("      ./csubscriber -ip 107.108.81.116 -port 5562 \n");
+    printf("      ./csubscriber -ip 0.0.0.0 -port 5562 \n");
     printf("      ./csubscriber -ip localhost -port 5562 \n");
     printf("\n  (2) For subscribing with topic:  \n");
-    printf("      ./csubscriber -ip 107.108.81.116 -port 5562 -t topic1 \n");
+    printf("      ./csubscriber -ip 0.0.0.0 -port 5562 -t topic1 \n");
     printf("      ./csubscriber -ip localhost -port 5562 -t topic1 \n");
 }
 
