@@ -237,15 +237,17 @@ int main(int argc, char* argv[])
 
     if(1 == secured)
     {
-        const char *serverPublicKey = "tXJx&1^QE2g7WCXbF.$$TVP.wCtxwNhR8?iLi&S<";
+        // put server public key
+        const char *serverPublicKey = "";
         result = ezmqSetServerPublicKey(subscriber, serverPublicKey);
         if(result != CEZMQ_OK)
         {
             printf("\nezmqSetServerPrivateKey failed: %d\n", result);
             return -1;
         }
-        const char *clientSecretKey = "ZB1@RS6Kv^zucova$kH(!o>tZCQ.<!Q)6-0aWFmW";
-        const char *clientPublicKey = "-QW?Ved(f:<::3d5tJ$[4Er&]6#9yr=vha/caBc(";
+        // put client key
+        const char *clientSecretKey = "";
+        const char *clientPublicKey = "";
         result = ezmqSetClientKeys(subscriber, clientSecretKey, clientPublicKey);
         if(result != CEZMQ_OK)
         {

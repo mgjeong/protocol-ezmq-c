@@ -186,7 +186,8 @@ int main(int argc, char* argv[])
     // set the server key
     if(1 == secured)
     {
-        const char *serverSecretKey = "[:X%Q3UfY+kv2A^.wv:(qy2E=bk0L][cm=mS3Hcx";
+        // put server secret key
+        const char *serverSecretKey = "";
         result = ezmqSetServerPrivateKey(gPublisher, serverSecretKey);
         if(result != CEZMQ_OK)
         {
